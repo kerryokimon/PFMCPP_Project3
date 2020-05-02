@@ -174,58 +174,62 @@ struct CarWash //2)
 
 /*
 1)
+Skateboard
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Grip tape
+    2) Wheels
+    3) Trucks
+    4) Bearings
+    5) Wood
 3 things it can do:
-    1)
-    2)
-    3)
+    1) roll
+    2) slide
+    3) flip
  */
 
 /*
 2)
+Synthesizer
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Knobs
+    2) LFO
+    3) Filter
+    4) Oscillator
+    5) FX
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Oscillate
+    2) Play sounds
+    3) Arpegiate
  */
 
 /*
 3)
+Computer
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) keys
+    2) screen
+    3) lights
+    4) buttons
+    5) mouse
 3 things it can do:
-    1)
-    2)
-    3)
+    1) do taxes
+    2) play music
+    3) display numbers
  */
 
 /*
 4)
+Midi Controller
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) knobs
+    2) buttons
+    3) faders
+    4) display
+    5) pads
 3 things it can do:
-    1)
-    2)
-    3)
+    1) control synth
+    2) adjust volume
+    3) change bank
  */
 
 /*
