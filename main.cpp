@@ -59,11 +59,11 @@ Thing: Car Wash
 1)
 Skateboard
 5 properties:
-    1) Grip tape
-    2) Wheels
-    3) Trucks
-    4) Bearings
-    5) Wood
+    1) Grip tape color
+    2) Hardness of Wheels
+    3) Brand of Trucks
+    4) Age of Bearings
+    5) Type of Wood
 3 things it can do:
     1) roll
     2) slide
@@ -74,11 +74,12 @@ Skateboard
 2)
 Synthesizer
 5 properties:
-    1) Knobs
-    2) LFO
-    3) Filter
-    4) Oscillator
-    5) FX
+    1) Number of Knobs
+    2) Speed of LFO's
+    3) Types of Filters
+    4) Number of Oscillators
+    5) Types of FX processor 
+
 3 things it can do:
     1) Oscillate
     2) Play sounds
@@ -89,11 +90,11 @@ Synthesizer
 3)
 Computer
 5 properties:
-    1) keys
-    2) screen
-    3) lights
-    4) buttons
-    5) mouse
+    1) Feel of keys
+    2) Resolution of Monitor
+    3) Kinds of indictor lights
+    4) Number of buttons
+    5) Speed of Processor
 3 things it can do:
     1) do taxes
     2) play music
@@ -104,11 +105,11 @@ Computer
 4)
 Midi Controller
 5 properties:
-    1) knobs
-    2) buttons
-    3) faders
-    4) display
-    5) pads
+    1) Number of knobs
+    2) Kinds of buttons
+    3) Range of faders
+    4) Size of display
+    5) Types of pads
 3 things it can do:
     1) control synth
     2) adjust volume
