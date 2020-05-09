@@ -110,17 +110,17 @@ Midi Controller
  */
 
 /*
-Thing 10)
+Thing 10) House
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Number of Doors
+    2) Type of Roof
+    3) Color of Paint
+    4) Size of Windows
+    5) Acreage
 3 things it can do:
-    1)
-    2)
-    3)
+    1) House people
+    2) Store Furniture
+    3) Protect people
  */
 
  /*
