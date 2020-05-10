@@ -121,6 +121,65 @@ Thing 10) Car
     1) Drive
     2) Park
     3) Stop
+
+Radio
+    1) Frequency of Station
+    2) Brightness of Display
+    3) Size of Display
+    4) Number of Knobs
+    5) Type of Navigation System
+3 things it can do:
+    1) Play music
+    2) Navigate the car
+    3) Play the news  
+
+Tires
+5 properties:
+    1) Brand 
+    2) Height
+    3) Width
+    4) Softness
+    5) Speed Rating
+3 things it can do:
+    1) Roll
+    2) skid
+    3) Squeel
+
+Engine
+5 properties:
+    1) Volume
+    2) Viscosity of Oil
+    3) Number of Cylinders
+    4) Type of Transmission
+    5) Count of Spark Plugs
+3 things it can do:
+    1) Generate torque
+    2) Produce heat
+    3) Propel the car
+
+Rims
+5 properties:
+    1) Height
+    2) Width
+    3) Type of metal
+    4) Number of Nuts
+    5) Color
+3 things it can do:
+    1) Make the care look more attractive
+    2) Carry the cars weight
+    3) Holds the tires
+
+Seats
+5 properties:
+    1) Type of leather
+    2) Angle recline
+    3) Color
+    4) Height
+    5) Softness
+3 things it can do:
+    1) Recline
+    2) Shift forward or back
+    3) Carry a passenger
  */
 
  /*
