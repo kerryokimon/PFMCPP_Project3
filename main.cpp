@@ -110,17 +110,17 @@ Midi Controller
  */
 
 /*
-Thing 10) House
+Thing 10) Car
 5 properties:
-    1) Number of Doors
-    2) Type of Roof
-    3) Color of Paint
-    4) Size of Windows
-    5) Acreage
+    1) Brand of Radio
+    2) Number of Tires
+    3) Size of Engine
+    4) Brand of Rims
+    5) Count of Seats
 3 things it can do:
-    1) House people
-    2) Store Furniture
-    3) Protect people
+    1) Drive
+    2) Park
+    3) Stop
  */
 
  /*
