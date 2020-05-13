@@ -62,37 +62,22 @@ Skateboard
     2) slide
     3) flip
  */
-struct Skateboard
-{
-    char gripTapeColor = 'b';
-    int wheelHardness = 99;
-    char truckBrand = 't';
-    int bearingAge = 3;
-    char woodtype = 'o';
-};
-/*
-2)
-Synthesizer
-5 properties:
-    1) Number of Knobs
-    2) Speed of LFO's
-    3) Types of Filters
-    4) Number of Oscillators
-    5) Types of FX processor 
 
-3 things it can do:
-    1) Oscillate
-    2) Play sounds
-    3) Arpegiate
+/*
+2) Car
+5 properties:	
+    1) Brand of Radio	    
+    2) Number of Tires	    
+    3) Size of Engine	    
+    4) Brand of Rims	    
+    5) Count of Seats	    
+3 things it can do:	
+    1) Drive	    
+    2) Park	   
+    3) Stop
+
  */
-struct Synth
-{
-    int knobNum = '4';
-    int LfoSpeed = 99;
-    char filterType = 'b';
-    int OscNum = 3;
-    int FxType = 1;
-};
+
 /*
 3)
 Computer
@@ -107,14 +92,7 @@ Computer
     2) play music
     3) display numbers
  */
-struct Computer
-{
-    int keyFeel = 1;
-    int monitorResolution = 1080;
-    char indicatorLight = 'l';
-    int buttonNum = 8;
-    float proSpeed = 2.4f;
-};
+
 /*
 4)
 Midi Controller
@@ -129,138 +107,22 @@ Midi Controller
     2) adjust volume
     3) change bank
  */
-struct MidiController
-{
-    int numKnobs = 8;
-    char buttonKind = 'c';
-    int faderRange = 10;
-    int displaySize = 12;
-    bool lightPads = 0;
 
-};
 /*
-Thing 10) Car
+Thing 10) Synthesizer
 5 properties:
-    1) Radio
-    2) Tires
-    3) Engine
-    4) Rims
-    5) Seat
+    1) Filter
+    2) LFO
+    3) Oscillator
+    4) Display
+    5) FX Section
 3 things it can do:
-    1) Drive
-    2) Park
-    3) Stop
+    1) Oscillate
+    2) Play sounds
+    3) Arpegiate
+
 */
 
-
-/*
-Radio
-    1) Frequency of Station
-    2) Brightness of Display
-    3) Size of Display
-    4) Number of Knobs
-    5) Type of Navigation System
-3 things it can do:
-    1) Play music
-    2) Navigate the car
-    3) Play the news  
-*/
-struct Radio
-{
-    float stationFreq = 99.3f;
-    int displayBrightness = 10;
-    float displaySize = 7.2f;
-    int numKnobs = 12;
-    char naviSystem = 'a';
-};
-/*
-Tires
-5 properties:
-    1) Brand 
-    2) Height
-    3) Width
-    4) Softness
-    5) Speed Rating
-3 things it can do:
-    1) Roll
-    2) skid
-    3) Squeel
-*/
-struct Tire
-{
-    char brand = 'g';
-    float height = 10.1f;
-    float width = 8.1f;
-    int softness = 127;
-    char speedRating = 'z';
-
-
-};
-/*
-Engine
-5 properties:
-    1) Volume
-    2) Viscosity of Oil
-    3) Number of Cylinders
-    4) Type of Transmission
-    5) Count of Spark Plugs
-3 things it can do:
-    1) Generate torque
-    2) Produce heat
-    3) Propel the car
-*/
-struct Engine
-{
-    float volume = 4.6f;
-    int viscosity = 30;
-    int numCylinders = 8;
-    char transmissionType= 'v';
-    int numSparkPlugs = 8;
-};
-/*
-Rims
-5 properties:
-    1) Height
-    2) Width
-    3) Type of metal
-    4) Number of Nuts
-    5) Color
-3 things it can do:
-    1) Make the care look more attractive
-    2) Carry the cars weight
-    3) Holds the tires
-*/
-struct Rims
-{
-    int rimHeight = 17;
-    int rimWidth = 10;
-    char metalType = 'c';
-    int numNuts = 5;
-    char rimColor = 'b';
-};
-
-/*
-Seats
-5 properties:
-    1) Type of cover
-    2) Angle recline
-    3) Color
-    4) Height
-    5) Softness
-3 things it can do:
-    1) Recline
-    2) Shift forward or back
-    3) Carry a passenger
- */
-struct Seat
-{
-    char coverType = 'l';
-    float reclineAngle = 75.3f;
-    char seatColor = 'b';
-    int seatHeight = 12;
-    char seatSoftness =  8;
-
-};
  /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
