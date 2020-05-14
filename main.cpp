@@ -125,73 +125,77 @@ Midi Controller
  */
 
 /*
-Thing 5)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+Thing 5) Filter
+    1) Filter Type
+    2) Range of Frequency
+    3) Amount of Resonance
+    4) Amount of modulation
+    5) Amount of Cutoff
 3 things it can do:
-    1)
-    2)
-    3)
+    1) make a sound darker
+    2) make the sound sharper
+    3) make the sound brighter
+
  */
 
 /*
-Thing 6)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+Thing 6) Oscillator
+    1) Amount of Frequency Modulation
+    2) Type of Waveform
+    3) Amount of course pitch change
+    4) Sync
+    5) Amount of Volume
+
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Modulate another Oscillator
+    2) Generates a signal
+    3) Converts DC to AC
+
  */
 
 /*
-Thing 7)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+Thing 7) LFO
+    1) Type of waveform
+    2) Rate of LFO
+    3) Phase start position
+    4) Sync with DAW Tempo
+    5) Polarity
+
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Modulate Cutoff
+    2) Change Pitch
+    3) Adjust Frequency
+
  */
 
 /*
-Thing 8)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+Thing 8) Display
+    1) Resolution
+    2) Pixel Size
+    3) Width
+    4) Color
+    5) Display Technology
+
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Show settings
+    2) Consume electric
+    3) Glow
+
  */
 
 /*
-Thing 9)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+Thing 9) FX Section
+    1) Amount of Reverb
+    2) Amount of distortion
+    3) Amount of Wet Signal (dry/wet)
+    4) Delay type
+    5) Reverb type
+
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Make the sound echo
+    2) Reverberate the sound
+    3) Saturate the sound
+
  */
 
 /*
@@ -207,63 +211,7 @@ Thing 10) Synthesizer
     2) Play sounds
     3) Arpegiate
 
-Filter
-    1) Filter Type
-    2) Range of Frequency
-    3) Amount of Resonance
-    4) Amount of modulation
-    5) Amount of Cutoff
-3 things it can do:
-    1) make a sound darker
-    2) make the sound sharper
-    3) make the sound brighter
 
-Oscillator
-    1) Amount of Frequency Modulation
-    2) Type of Waveform
-    3) Amount of course pitch change
-    4) Sync
-    5) Amount of Volume
-
-3 things it can do:
-    1) Modulate another Oscillator
-    2) Generates a signal
-    3) Converts DC to AC
-LFO
-    1) Type of waveform
-    2) Rate of LFO
-    3) Phase start position
-    4) Sync with DAW Tempo
-    5) Polarity
-
-3 things it can do:
-    1) Modulate Cutoff
-    2) Change Pitch
-    3) Adjust Frequency
-
-Display
-    1) Resolution
-    2) Pixel Size
-    3) Width
-    4) Color
-    5) Display Technology
-
-3 things it can do:
-    1) Show settings
-    2) Consume electric
-    3) Glow
-
-FX Section
-    1) Amount of Reverb
-    2) Amount of distortion
-    3) Amount of Wet Signal (dry/wet)
-    4) Delay type
-    5) Reverb type
-
-3 things it can do:
-    1) Make the sound echo
-    2) Reverberate the sound
-    3) Saturate the sound
 */
 
  /*
