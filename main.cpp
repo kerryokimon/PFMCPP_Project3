@@ -130,7 +130,7 @@ struct Skateboard
     std::string woodType = "oak";
 //3 things it can do:
     //1) roll
-    void rollDownStreet(int speed());
+    void rollDownStreet(int speed);
     //2) slide
     void railSlide(bool frontSide = true);
     //3) flip
@@ -154,11 +154,11 @@ struct Car
     int seatCount = 2;	    
 //3 things it can do:	
     //1) Drive	
-    void drive(int speed());    
+    void drive(int speed);    
     //2) Park
-    void park(int parkingStallNumber());	   
+    void park(int parkingStallNumber);	   
     //3) Stop
-    void stop(int stopDistance());
+    void stop(int stopDistance);
 };
  
 
@@ -183,7 +183,7 @@ struct Computer
     //2) play music
     void playMusic(int howLoud = 11); //play it loud!
     //3) display numbers
-    void displayNumbers(int numberCount());
+    void displayNumbers(int numberCount);
 };
 
 
@@ -204,11 +204,11 @@ struct MidiController
 
 //3 things it can do:
     //1) control synth
-    void controlSynth(int midiMessage());
+    void controlSynth(int midiMessage);
     //2) adjust volume
     void adjustVolume(int midiMessage = 7);
     //3) change bank
-    void changeBank();
+    void changeBank(int bankNumber);
 };
 
 
@@ -227,11 +227,11 @@ struct Filter
     float cutOffFrequency = 20.0f;
 //3 things it can do:
     //1) make a sound darker
-    void soundTone(float cutoffFrequency());
+    void soundTone(float cutoffFrequency = 20.0f);
     //2) make the sound sharper
-    void addResonance(int rezAmount());
+    void addResonance(int rezAmount);
     //3) make the sound brighter
-    void cutLowFreq(float cutOffFrequency = 1000);
+    void cutLowFreq(float cutOffFrequency = 1000.0f);
 };
 
 
@@ -253,7 +253,7 @@ struct Oscillator
     //1) Modulate another Oscillator
     bool osc2Mod = true;
     //2) Generates a signal
-    void signalGen(int frequency());
+    void signalGen(int frequency);
     //3) Converts DC to AC
     bool voltageConversion = true;
 };
@@ -276,11 +276,11 @@ struct LFO
 
 //3 things it can do:
     //1) Modulate Cutoff
-    void modulateCutoff(float lfoRate(), bool syncOn = false);
+    void modulateCutoff(float lfoRate, bool syncOn = false);
     //2) Change Pitch
-    void changePitch(int pitchChangeAmount());
+    void changePitch(int pitchChangeAmount);
     //3) Adjust Frequency
-    void adjustFrequency(int freqHz());
+    void adjustFrequency(int freqHz);
 };
 
 
@@ -326,9 +326,9 @@ struct FXSection
     //1) Make the sound echo
     bool delayActive = false;
     //2) Reverberate the sound
-    void reverbOutput(int reverbtype(), bool reverbOn = true);
+    void reverbOutput(int reverbtype, bool reverbOn = true);
     //3) Saturate the sound
-    void saturationActive(int distAmount(), bool wetSignal());
+    void saturationActive(int distAmount, bool wetSignal());
 };
  
 
@@ -351,7 +351,7 @@ struct Synthesizer
     //1) Sequence
     void sequenceNotesOn();
     //2) Play sounds
-    void playSound(Synthesizer(std::string brand()));
+    void playSound(Synthesizer(std::string brand));
     //3) Arpeggiate
     void synthArpeggiate(int style = 1); //1=up 2=down
 };
