@@ -324,7 +324,7 @@ struct FXSection
 
 //3 things it can do:
     //1) Make the sound echo
-    bool delayActive = false; FIXME this is not a function declaration
+    void delayActive(bool delayOn = false); 
     //2) Reverberate the sound
     void reverbOutput(int reverbtype, bool reverbOn = true);
     //3) Saturate the sound
