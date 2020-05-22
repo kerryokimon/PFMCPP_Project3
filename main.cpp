@@ -29,7 +29,7 @@ struct Person
 
     struct Foot
     {
-        float length;
+        int length;
         float width;
         float shoeSize;
         void stepForward();
@@ -46,9 +46,9 @@ void Person::Foot::stepForward()
 }
 int Person::Foot::stepSize(int howLong)
 {
-    
-    howLong =1;
-    length = 2.0f;
+    length = 2;
+    howLong = length + length;
+    std::cout << howLong;
 }
 
 void Person::run(int howFast, bool startWithLeftFoot)
@@ -118,8 +118,9 @@ void Skateboard::railSlide(bool frontSide)
         std::cout << "Now try it backside, dude!\n.";
     }
     else
+    {
         std::cout << "Now try it frontside, dude!\n.";
-
+    }
 }
 
 void Skateboard::kickFlip(int degree)
@@ -164,9 +165,9 @@ void Car::drive(int speed)
 void Car::park(int parkingStallNumber)
 {
     if (parkingStallNumber == 3)
-        {
-            std::cout << "Parking Stall" << parkingStallNumber << "is not paid\n.";
-        }
+    {
+        std::cout << "Parking Stall" << parkingStallNumber << "is not paid\n.";
+    }
 }
 void Car::stop(int stopDistance)
 {
@@ -212,7 +213,10 @@ void Computer::playMusic(int howLoud)
     {
         loudness = howLoud;
     }
-     
+    else
+    {
+        loudness = 0; //there is only one loudness and that's 11 or turn it off!!!!
+    }
 }
 //4)
 struct MidiController
@@ -246,8 +250,8 @@ void MidiController::controlSynth(int midiMessage)
 
 void MidiController::adjustVolume(int midiMessage)
 {
-    bool midiVolume;
-    if (midiMessage)
+    bool midiVolume = true;
+    if (midiMessage == 7)
     
     {
         midiVolume = true;
@@ -275,28 +279,30 @@ struct Filter
     
     float cutOffFrequency = 20.0f;
 
-    void getSoundTone(float cutoffFrequency = 20.0f);
+    void getSoundTone(float cutoffFrequency = 20.0f,float freqRangeRemaining = 0.0f);
     
-    void addResonance(int rezAmount);
+    void addResonance(int rezAmount, int resonance);
     
     void cutLowFreq(float cutOffFrequency = 1000.0f);
 };
 
-void Filter::getSoundTone(float cutoffFrequency)
+void Filter::getSoundTone(float cutoffFrequency, float freqRangeRemaining)
 {
     if (cutOffFrequency < frequencyRange)
     {
-        float freqRangeRemaining;
+        
         freqRangeRemaining = (frequencyRange - cutOffFrequency);
+        std::cout << freqRangeRemaining;
     }
     else
     {
         std::cout << cutoffFrequency;
     } 
 }
-void addResonance(int rezAmount)
+void addResonance(int rezAmount, int resonance)
 {
     rezAmount = 2;
+    resonance = resonance + rezAmount;
 }
 
 
@@ -427,7 +433,7 @@ void Display::displaySettings(char newDisplayColor)
     }
     else
     {
-        (newDisplayColor = 'b');
+        newDisplayColor = 'b';
     } 
 }
 void Display::displayBritenessDim (bool powerSaver, int lumens)
@@ -471,8 +477,8 @@ void FXSection::delayActive(bool delayOn)
 {
     if (delayOn == true)
     {
-        wetSignal =75;
-        delayType =1;
+        wetSignal = 75;
+        delayType = 1;
     }
 }
 
