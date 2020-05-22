@@ -95,11 +95,11 @@ struct Skateboard
     std::string woodType = "oak";
 
   
-    void rollDownStreet(int speed);
+    float rollDownStreet(int speed); //returns how far you roll
     
-    void railSlide(bool frontSide = true);
+    double railSlide(bool frontSide = true); //returns the distance slid
     
-    void kickFlip(int degree = 360);
+    bool kickFlip(int degree = 360); //returns true if the kickflip was successfully performed.
 };
 
 void Skateboard::rollDownStreet(int speed)
@@ -150,11 +150,11 @@ struct Car
     int seatCount = 2;
 
     
-    void drive(int speed);    
+    int drive(int speed);    //returns how far you drove
     
     void park(int parkingStallNumber);
     
-    void stop(int stopDistance);
+    bool stop(int stopDistance); //returns true if you stopped in time.
 };
  
 void Car::drive(int speed)
@@ -191,9 +191,9 @@ struct Computer
     float processorSpeed = 4.0f;
 
     
-    void runQuickbooks(bool isQbInstalled = true);
+    bool runQuickbooks(bool isQbInstalled = true); //returns true if it ran successfully
     
-    void playMusic(int howLoud = 11); //play it loud!
+    bool playMusic(int howLoud = 11); //returns true if hearing damage occurred
     
     void displayVolume(int loudness = 1);
 };
@@ -235,7 +235,7 @@ struct MidiController
 
     void controlSynth(int midiMessage);
     
-    void adjustVolume(int midiMessage = 7);
+    float adjustVolume(int midiMessage = 7); //returns the volume level in decibels
     
     void changeBank(int bankNumber);
 };
@@ -281,7 +281,7 @@ struct Filter
 
     void getSoundTone(float cutoffFrequency = 20.0f,float freqRangeRemaining = 0.0f);
     
-    void addResonance(int rezAmount, int resonance);
+    int addResonance(int rezAmount, int resonance); //returns the total resonance amount
     
     void cutLowFreq(float cutOffFrequency = 1000.0f);
 };
@@ -324,11 +324,11 @@ struct Oscillator
 
     
     
-    void osc2Mod(bool osc2ModActive = false);
+    float osc2Mod(bool osc2ModActive = false); //returns the new OSC output value.
     
     void signalGen(int frequency);
     
-    void convertVoltage(bool voltageCovertActive = true);
+    float convertVoltage(bool voltageCovertActive = true); //returns the converted voltage level
 };
 
 void Oscillator::osc2Mod(bool osc2ModActive)
@@ -374,9 +374,9 @@ struct LFO
 
 
     
-    void modulateCutoff(float lfoRate, bool syncOn = false);
+    float modulateCutoff(float lfoRate, bool syncOn = false); //returns filter frequency after being modulated
     
-    void changePitch(int pitchChangeAmount);
+    float changePitch(int pitchChangeAmount); //returns new pitch, expressed in Hertz
     
     void adjustFrequency(int freqHz);
 };
@@ -420,9 +420,9 @@ struct Display
     
     void displaySettings(char newDisplayColor);
     
-    void energyConsumption(int wattsUsed);
+    bool energyConsumption(int wattsUsed); //returns true if it triggers a blown fuse.
     
-    void displayBritenessDim (bool powerSaver = true, int lumens = 100);
+    float displayBritenessDim (bool powerSaver = true, int lumens = 100); //returns the power consumed at this new brightness level
 };
  
 void Display::displaySettings(char newDisplayColor)
@@ -469,7 +469,7 @@ struct FXSection
     
     void delayActive(bool delayOn = false); 
     
-    void reverbOutput(int reverbType, bool reverbOn = true);
+    float reverbOutput(int reverbType, bool reverbOn = true); //returns one sample of computed reverb
     
     void saturationActive(int distAmount2, bool active);
 };
@@ -511,7 +511,7 @@ struct Synthesizer
    
     void sequenceNotesOn();
     
-    void playSound(int soundNum, float numSamplesToPlay, float volumeLevel);
+    float playSound(int soundNum, float numSamplesToPlay, float volumeLevel); //returns the volume level in decibels
 
     void handleKeyPress(int keyNumPressed);
     
