@@ -29,7 +29,7 @@ struct Person
 
     struct Foot
     {
-        int length;
+        int length = 1;
         float width;
         float shoeSize;
         void stepForward();
@@ -42,13 +42,13 @@ struct Person
 };
 void Person::Foot::stepForward()
 {
-    length = 1.0f;
+     length += 2;
 }
 int Person::Foot::stepSize(int howLong)
 {
-    length = 2;
+    //length = 2;
     howLong = length + length;
-    return (howLong);
+    return howLong; 
     
 }
 
@@ -108,13 +108,8 @@ float Skateboard::rollDownStreet(int speed)
     if (speed > 20)
     {
         std::cout << "Slow Down\n.";
-        
     }
-    
-        return speed;
-    
-    
-
+    return speed; 
 }
 
 double Skateboard::railSlide(bool frontSide, double velocity, double friction)
@@ -137,10 +132,7 @@ bool Skateboard::kickFlip(int degree)
         std::cout << "rad!\n.";
         return true;
     }
-    else
-    {
         return false;
-    }
 }
 
 
@@ -180,10 +172,7 @@ bool Car::stop(int stopDistance)
         std::cout << "Crash!\n.";
         return false;
     }
-    else 
-    { 
-        return false;
-    }
+        return true;
 }
 
 struct Computer
@@ -213,11 +202,9 @@ bool Computer::runQuickbooks(bool isQBInstalled)
     {
         return false;
     }
-    else
-    {
         return true;
-    }
 }
+
 void Computer::displayVolume(int loudness)
 {
     loudness = 11;
@@ -229,12 +216,8 @@ bool Computer::playMusic(int howLoud)
     {
         return true;
     }
-    else
-    {
         loudness = 0; //there is only one loudness and that's 11 or turn it off!!!!
         return false;
-        
-    }
 }
 //4)
 struct MidiController
@@ -274,10 +257,7 @@ float MidiController::adjustVolume(int midiMessage)
     {
         return faderRange;
     }
-    else
-    {
         return 0.1f;
-    }
 }
 
 void MidiController::changeBank(int bankNumber)
@@ -416,25 +396,18 @@ float LFO::modulateCutoff(float lfoRate, bool syncOff)
     {
         return lfoRate * phaseStartPos;//10;
     }
-    else
-    {
         return lfoRate;
-    }
 }
 
 float LFO::changePitch(float pitchChangeAmount, float pitch)
-{
-    
-    {
+{  
         return pitch + pitchChangeAmount;
-    }
 }
+
 void LFO::adjustFrequency(int freqHz)
 {
     std::cout << freqHz;
 }
-
-
 
 
 //Thing 8) 
@@ -482,14 +455,8 @@ float Display::displayBritenessDim (bool powerSaver, int lumens, int hoursOn)
 
 bool Display::energyConsumption(int wattsUsed)
 {
-    if (wattsUsed > 100)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return wattsUsed > 100;
+   
 }
 
 
@@ -530,11 +497,9 @@ float FXSection::reverbOutput(int reverbType, bool reverbOn)
     {
         return reverbType * reverbAmount;
     }
-    else
-    {
         return 0.0f;
-    }
 }
+
 void FXSection::saturationActive(int distAmount2, bool active)
 {
     distAmount2 = 50;
