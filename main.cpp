@@ -48,7 +48,8 @@ int Person::Foot::stepSize(int howLong)
 {
     length = 2;
     howLong = length + length;
-    std::cout << howLong;
+    return (howLong);
+    
 }
 
 void Person::run(int howFast, bool startWithLeftFoot)
@@ -97,21 +98,26 @@ struct Skateboard
   
     float rollDownStreet(int speed); //returns how far you roll
     
-    double railSlide(bool frontSide = true); //returns the distance slid
+    double railSlide(bool frontSide = true, double velocity = 10, double friction = 10); //returns the distance slid
     
     bool kickFlip(int degree = 360); //returns true if the kickflip was successfully performed.
 };
 
-void Skateboard::rollDownStreet(int speed)
+float Skateboard::rollDownStreet(int speed)
 {
-  if (speed > 20)
+    if (speed > 20)
     {
-        std::cout << "Slow Down\n.";  
-
+        std::cout << "Slow Down\n.";
+        
     }
+    
+        return speed;
+    
+    
 
 }
-void Skateboard::railSlide(bool frontSide)
+
+double Skateboard::railSlide(bool frontSide, double velocity, double friction)
 {
     if (frontSide)
     {
@@ -121,24 +127,22 @@ void Skateboard::railSlide(bool frontSide)
     {
         std::cout << "Now try it frontside, dude!\n.";
     }
+    return velocity + friction;
 }
 
-void Skateboard::kickFlip(int degree)
+bool Skateboard::kickFlip(int degree)
 {
-    if (degree > 360)
+    if (degree == 360)
     {
         std::cout << "rad!\n.";
+        return true;
+    }
+    else
+    {
+        return false;
     }
 }
-/*
-if( true )
-{ 
-    do the stuff inside this{}
-else
-{
-    do the stuff in side THIS{}
-}
-*/
+
 
 struct Car
 {
@@ -150,16 +154,16 @@ struct Car
     int seatCount = 2;
 
     
-    int drive(int speed);    //returns how far you drove
+    int drive(int speed, int time);    //returns how far you drove
     
     void park(int parkingStallNumber);
     
     bool stop(int stopDistance); //returns true if you stopped in time.
 };
  
-void Car::drive(int speed)
+int Car::drive(int speed, int time)
 {
-    speed = 65;
+    return speed * time;
 }
 
 void Car::park(int parkingStallNumber)
@@ -169,11 +173,16 @@ void Car::park(int parkingStallNumber)
         std::cout << "Parking Stall" << parkingStallNumber << "is not paid\n.";
     }
 }
-void Car::stop(int stopDistance)
+bool Car::stop(int stopDistance)
 {
     if (stopDistance >= 30)
     {
         std::cout << "Crash!\n.";
+        return false;
+    }
+    else 
+    { 
+        return false;
     }
 }
 
@@ -198,24 +207,33 @@ struct Computer
     void displayVolume(int loudness = 1);
 };
 
-void Computer::runQuickbooks(bool isQBInstalled)
+bool Computer::runQuickbooks(bool isQBInstalled)
 {
-    isQBInstalled = false;
+    if (isQBInstalled == false)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
 void Computer::displayVolume(int loudness)
 {
     loudness = 11;
 }
-void Computer::playMusic(int howLoud)
+bool Computer::playMusic(int howLoud)
 {
     int loudness;
     if (howLoud == 11)
     {
-        loudness = howLoud;
+        return true;
     }
     else
     {
         loudness = 0; //there is only one loudness and that's 11 or turn it off!!!!
+        return false;
+        
     }
 }
 //4)
@@ -248,13 +266,17 @@ void MidiController::controlSynth(int midiMessage)
     }
 }
 
-void MidiController::adjustVolume(int midiMessage)
+float MidiController::adjustVolume(int midiMessage)
 {
-    bool midiVolume = true;
+    
     if (midiMessage == 7)
     
     {
-        midiVolume = true;
+        return faderRange;
+    }
+    else
+    {
+        return 0.1f;
     }
 }
 
@@ -312,7 +334,7 @@ void addResonance(int rezAmount, int resonance)
 struct Oscillator
 {
     
-    int freqMod = 1; //1-10
+    int oscOutput = 1; //1-10
     
     int waveType = 1; //1=sine 2=saw 3=square
     
@@ -328,15 +350,20 @@ struct Oscillator
     
     void signalGen(int frequency);
     
-    float convertVoltage(bool voltageCovertActive = true); //returns the converted voltage level
+    float convertVoltage(bool voltageCovertActive, float resistance, float current); //returns the converted voltage level
 };
 
-void Oscillator::osc2Mod(bool osc2ModActive)
+
+float Oscillator::osc2Mod(bool osc2ModActive)
 {
     if (osc2ModActive == true)
     {
-        freqMod = 5;
+        return 33.3f;
     }
+    else
+    {
+        return 0.0f;
+    }    
 }
 
 void Oscillator::signalGen(int frequency)
@@ -347,12 +374,15 @@ void Oscillator::signalGen(int frequency)
     }
 }
 
-void Oscillator::convertVoltage(bool voltageConvertActive)
+float Oscillator::convertVoltage(bool voltageConvertActive, float resistance, float current)
 {
-    int voltageOutput = 120;
     if (voltageConvertActive == true)
     {
-        std::cout << voltageOutput;
+        return resistance * current;
+    }
+    else
+    {
+        return 0.0f;
     }
 }
 
@@ -376,23 +406,27 @@ struct LFO
     
     float modulateCutoff(float lfoRate, bool syncOn = false); //returns filter frequency after being modulated
     
-    float changePitch(int pitchChangeAmount); //returns new pitch, expressed in Hertz
+    float changePitch(float pitchChangeAmount, float pitch); //returns new pitch, expressed in Hertz
     
     void adjustFrequency(int freqHz);
 };
-void LFO::modulateCutoff(float lfoRate, bool syncOff)
+float LFO::modulateCutoff(float lfoRate, bool syncOff)
 {
     if (syncOff == true)
     {
-        lfoRate = 333.0f;
+        return lfoRate * phaseStartPos;//10;
+    }
+    else
+    {
+        return lfoRate;
     }
 }
 
-void LFO::changePitch(int pitchChangeAmount)
+float LFO::changePitch(float pitchChangeAmount, float pitch)
 {
-    if (pitchChangeAmount == 12)
+    
     {
-        std::cout << "1 octave\n.";
+        return pitch + pitchChangeAmount;
     }
 }
 void LFO::adjustFrequency(int freqHz)
@@ -422,7 +456,7 @@ struct Display
     
     bool energyConsumption(int wattsUsed); //returns true if it triggers a blown fuse.
     
-    float displayBritenessDim (bool powerSaver = true, int lumens = 100); //returns the power consumed at this new brightness level
+    float displayBritenessDim (bool powerSaver = true, int lumens = 100, int hoursOn = 1); //returns the power consumed at this new brightness level
 };
  
 void Display::displaySettings(char newDisplayColor)
@@ -436,17 +470,25 @@ void Display::displaySettings(char newDisplayColor)
         newDisplayColor = 'b';
     } 
 }
-void Display::displayBritenessDim (bool powerSaver, int lumens)
+float Display::displayBritenessDim (bool powerSaver, int lumens, int hoursOn)
 {
-    powerSaver = true;
-    lumens = 50;
+    if (powerSaver == true)
+    {
+        std::cout << "Powersaver on\n.";
+    }
+    return lumens * hoursOn;
+    
 }
-void Display::energyConsumption(int wattsUsed)
+
+bool Display::energyConsumption(int wattsUsed)
 {
     if (wattsUsed > 100)
     {
-        void displayBritenessDim(); //(bool powerSaver);
-       
+        return true;
+    }
+    else
+    {
+        return false;
     }
 }
 
@@ -455,7 +497,7 @@ void Display::energyConsumption(int wattsUsed)
 struct FXSection
 {
     
-    int reverbAmount = 50;
+    float reverbAmount = 50;
     
     int distAmount = 1;
     
@@ -482,11 +524,16 @@ void FXSection::delayActive(bool delayOn)
     }
 }
 
-void FXSection::reverbOutput(int reverbType, bool reverbOn)
+float FXSection::reverbOutput(int reverbType, bool reverbOn)
 {
-    reverbType = 1;
-    reverbOn = true;
-    reverbAmount = 25;
+    if (reverbOn == true)
+    {
+        return reverbType * reverbAmount;
+    }
+    else
+    {
+        return 0.0f;
+    }
 }
 void FXSection::saturationActive(int distAmount2, bool active)
 {
@@ -532,7 +579,7 @@ void Synthesizer::sequenceNotesOn()
  
 }
 
-void Synthesizer::playSound(int soundNum, float numSamplesToPlay, float volumeLevel)
+float Synthesizer::playSound(int soundNum, float numSamplesToPlay, float volumeLevel)
 {
     /*
     this should decide WHICH sound is played.
@@ -552,6 +599,7 @@ void Synthesizer::playSound(int soundNum, float numSamplesToPlay, float volumeLe
     std::cout << "you played the sound: " << soundNum;
     std::cout << " for " << numSamplesToPlay << " samples,";
     std::cout << " at a volume level of " << volumeLevel << "\n";
+    return volumeLevel;
 }
 
 void Synthesizer::handleKeyPress(int keyNumPressed)
@@ -577,7 +625,7 @@ void Synthesizer::synthOutput(int style)
     {
         sequenceNotesOn();
         playSound(44,444,333);
-        lfo1.changePitch(10);
+        lfo1.changePitch(10.2f,2.2f);
         fxtab1.reverbOutput(10, true);
     }
 }
