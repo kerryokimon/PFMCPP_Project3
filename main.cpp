@@ -84,7 +84,7 @@ void Person::run(int howFast, bool startWithLeftFoot)
 //1)
 struct Skateboard
 {
-    
+    FIXME clean up blank lines
     std::string gripTapeColor = "Green";
     
     int wheelsHardness = 99;
@@ -138,7 +138,7 @@ bool Skateboard::kickFlip(int degree)
 
 struct Car
 {
-   
+   FIXME clean up blank lines
     std::string radioBrand = "Sony";
     int numTires = 4;
     int engineSize = 4600;
@@ -177,7 +177,7 @@ bool Car::stop(int stopDistance)
 
 struct Computer
 {
-
+FIXME clean up blank lines
     int keyFeel = 2;
     
     int monitorResolution = 1080;
@@ -222,7 +222,7 @@ bool Computer::playMusic(int howLoud)
 //4)
 struct MidiController
 {
-
+FIXME clean up blank lines
     int knobCount = 16;
     
     char buttonStyle = 'l';
@@ -251,7 +251,7 @@ void MidiController::controlSynth(int midiMessage)
 
 float MidiController::adjustVolume(int midiMessage)
 {
-    
+    FIXME clean up blank lines
     if (midiMessage == 7)
     
     {
@@ -263,14 +263,14 @@ float MidiController::adjustVolume(int midiMessage)
 void MidiController::changeBank(int bankNumber)
 {
     //if (bankNumber);
-
+FIXME clean up blank lines
     std::cout << "bank" << bankNumber << "selected\n.";
 }
 
 //Thing 5) 
 struct Filter
 {
-    
+    FIXME clean up blank lines
     std::string filterType = "LP";
     
     float frequencyRange = 20000.0F;
@@ -292,7 +292,7 @@ void Filter::getSoundTone(float cutoffFrequency, float freqRangeRemaining)
 {
     if (cutOffFrequency < frequencyRange)
     {
-        
+        FIXME clean up blank lines
         freqRangeRemaining = (frequencyRange - cutOffFrequency);
         std::cout << freqRangeRemaining;
     }
@@ -313,7 +313,7 @@ void addResonance(int rezAmount, int resonance)
 //Thing 6) 
 struct Oscillator
 {
-    
+    FIXME clean up blank lines
     int oscOutput = 1; //1-10
     
     int waveType = 1; //1=sine 2=saw 3=square
@@ -340,7 +340,7 @@ float Oscillator::osc2Mod(bool osc2ModActive)
     {
         return 33.3f;
     }
-    else
+    else FIXME what did we discuss about if/else and return statements?
     {
         return 0.0f;
     }    
@@ -360,7 +360,7 @@ float Oscillator::convertVoltage(bool voltageConvertActive, float resistance, fl
     {
         return resistance * current;
     }
-    else
+    else FIXME what did we discuss about if/else and return statements?
     {
         return 0.0f;
     }
@@ -371,7 +371,7 @@ float Oscillator::convertVoltage(bool voltageConvertActive, float resistance, fl
 //Thing 7) 
 struct LFO
 {
-    
+    FIXME clean up blank lines
     int waveType = 1; //1=sine 2=saw 3=square
     
     float LfoRate = 20.0f;
@@ -401,7 +401,7 @@ float LFO::modulateCutoff(float lfoRate, bool syncOff)
 
 float LFO::changePitch(float pitchChangeAmount, float pitch)
 {  
-        return pitch + pitchChangeAmount;
+        return pitch + pitchChangeAmount; FIXME indentation
 }
 
 void LFO::adjustFrequency(int freqHz)
@@ -413,7 +413,7 @@ void LFO::adjustFrequency(int freqHz)
 //Thing 8) 
 struct Display
 {
-    
+    FIXME clean up blank lines
     int screenRes = 1080;
     
     int pixelSize = 2;
@@ -434,7 +434,7 @@ struct Display
  
 void Display::displaySettings(char newDisplayColor)
 {
-    if (displayTechnology == "OLED")
+    if (displayTechnology == "OLED") FIXME newDisplayColor is a single char, not an array of char, which is what "OLED" is.
     {
         newDisplayColor = 'r';
     }
@@ -450,20 +450,20 @@ float Display::displayBritenessDim (bool powerSaver, int lumens, int hoursOn)
         std::cout << "Powersaver on\n.";
     }
     return lumens * hoursOn;
-    
+    FIXME clean up blank lines
 }
 
 bool Display::energyConsumption(int wattsUsed)
 {
     return wattsUsed > 100;
-   
+   FIXME clean up blank lines
 }
 
 
 //Thing 9) 
 struct FXSection
 {
-    
+    FIXME clean up blank lines
     float reverbAmount = 50;
     
     int distAmount = 1;
@@ -509,7 +509,7 @@ void FXSection::saturationActive(int distAmount2, bool active)
 //Thing 10) 
 struct Synthesizer
 {
-
+FIXME clean up blank lines
     Filter filterA;
    
     LFO lfo1;
@@ -532,7 +532,7 @@ struct Synthesizer
 
 void Synthesizer::sequenceNotesOn()
 {
-    
+    FIXME clean up blank lines
     filterA.frequencyRange = 20.0f;
     lfo1.bipolarOn = true;
     lfo1.waveType = 1; //1=sine 2=saw 3=square
@@ -585,7 +585,7 @@ void Synthesizer::handleKeyPress(int keyNumPressed)
 
 void Synthesizer::synthOutput(int style)
 {
-    
+    FIXME clean up blank lines
     if( style == 1)
     {
         sequenceNotesOn();
@@ -593,6 +593,7 @@ void Synthesizer::synthOutput(int style)
         lfo1.changePitch(10.2f,2.2f);
         fxtab1.reverbOutput(10, true);
     }
+    FIXME what if the style is not 1?
 }
  /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
