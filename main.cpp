@@ -84,22 +84,14 @@ void Person::run(int howFast, bool startWithLeftFoot)
 //1)
 struct Skateboard
 {
-    FIXME clean up blank lines
     std::string gripTapeColor = "Green";
-    
     int wheelsHardness = 99;
-    
     std::string truckBrand = "Independent";
-    
     int bearingAgeYears = 2;
-    
     std::string woodType = "oak";
-
   
     float rollDownStreet(int speed); //returns how far you roll
-    
     double railSlide(bool frontSide = true, double velocity = 10, double friction = 10); //returns the distance slid
-    
     bool kickFlip(int degree = 360); //returns true if the kickflip was successfully performed.
 };
 
@@ -132,24 +124,20 @@ bool Skateboard::kickFlip(int degree)
         std::cout << "rad!\n.";
         return true;
     }
-        return false;
+    return false;
 }
 
 
 struct Car
 {
-   FIXME clean up blank lines
     std::string radioBrand = "Sony";
     int numTires = 4;
     int engineSize = 4600;
     std::string rimBrand = "MSR";
     int seatCount = 2;
 
-    
     int drive(int speed, int time);    //returns how far you drove
-    
     void park(int parkingStallNumber);
-    
     bool stop(int stopDistance); //returns true if you stopped in time.
 };
  
@@ -172,27 +160,19 @@ bool Car::stop(int stopDistance)
         std::cout << "Crash!\n.";
         return false;
     }
-        return true;
+    return true;
 }
 
 struct Computer
 {
-FIXME clean up blank lines
     int keyFeel = 2;
-    
     int monitorResolution = 1080;
-    
     std::string indicatorLightKind = "LED";
-    
     int buttonCount = 3;
-    
     float processorSpeed = 4.0f;
-
     
     bool runQuickbooks(bool isQbInstalled = true); //returns true if it ran successfully
-    
     bool playMusic(int howLoud = 11); //returns true if hearing damage occurred
-    
     void displayVolume(int loudness = 1);
 };
 
@@ -202,7 +182,7 @@ bool Computer::runQuickbooks(bool isQBInstalled)
     {
         return false;
     }
-        return true;
+    return true;
 }
 
 void Computer::displayVolume(int loudness)
@@ -216,28 +196,20 @@ bool Computer::playMusic(int howLoud)
     {
         return true;
     }
-        loudness = 0; //there is only one loudness and that's 11 or turn it off!!!!
-        return false;
+    loudness = 0; //there is only one loudness and that's 11 or turn it off!!!!
+    return false;
 }
 //4)
 struct MidiController
 {
-FIXME clean up blank lines
     int knobCount = 16;
-    
     char buttonStyle = 'l';
-    
     int faderRange = 10;
-    
     float displaySizeInches = 7.2f;
-    
     std::string padType = "lit";
 
-
     void controlSynth(int midiMessage);
-    
     float adjustVolume(int midiMessage = 7); //returns the volume level in decibels
-    
     void changeBank(int bankNumber);
 };
 
@@ -251,40 +223,28 @@ void MidiController::controlSynth(int midiMessage)
 
 float MidiController::adjustVolume(int midiMessage)
 {
-    FIXME clean up blank lines
     if (midiMessage == 7)
-    
     {
         return faderRange;
     }
-        return 0.1f;
+    return 0.1f;
 }
 
 void MidiController::changeBank(int bankNumber)
 {
-    //if (bankNumber);
-FIXME clean up blank lines
     std::cout << "bank" << bankNumber << "selected\n.";
 }
 
 //Thing 5) 
 struct Filter
 {
-    FIXME clean up blank lines
     std::string filterType = "LP";
-    
     float frequencyRange = 20000.0F;
-    
     int rezAmount = 1; //1-100
-    
     int modAmount = 1; //1-100
-    
     float cutOffFrequency = 20.0f;
-
     void getSoundTone(float cutoffFrequency = 20.0f,float freqRangeRemaining = 0.0f);
-    
     int addResonance(int rezAmount, int resonance); //returns the total resonance amount
-    
     void cutLowFreq(float cutOffFrequency = 1000.0f);
 };
 
@@ -292,7 +252,6 @@ void Filter::getSoundTone(float cutoffFrequency, float freqRangeRemaining)
 {
     if (cutOffFrequency < frequencyRange)
     {
-        FIXME clean up blank lines
         freqRangeRemaining = (frequencyRange - cutOffFrequency);
         std::cout << freqRangeRemaining;
     }
@@ -313,23 +272,14 @@ void addResonance(int rezAmount, int resonance)
 //Thing 6) 
 struct Oscillator
 {
-    FIXME clean up blank lines
     int oscOutput = 1; //1-10
-    
     int waveType = 1; //1=sine 2=saw 3=square
-    
     int maxPitchChange = 24; //semitones
-    
     bool syncOn = false;
-    
     int maxVolume = 1; //1-11
 
-    
-    
-    float osc2Mod(bool osc2ModActive = false); //returns the new OSC output value.
-    
+    float osc2Mod(bool osc2ModActive = false); //returns the new OSC output value.    
     void signalGen(int frequency);
-    
     float convertVoltage(bool voltageCovertActive, float resistance, float current); //returns the converted voltage level
 };
 
@@ -340,10 +290,8 @@ float Oscillator::osc2Mod(bool osc2ModActive)
     {
         return 33.3f;
     }
-    else FIXME what did we discuss about if/else and return statements?
-    {
-        return 0.0f;
-    }    
+    return 0.0f;
+      
 }
 
 void Oscillator::signalGen(int frequency)
@@ -360,10 +308,7 @@ float Oscillator::convertVoltage(bool voltageConvertActive, float resistance, fl
     {
         return resistance * current;
     }
-    else FIXME what did we discuss about if/else and return statements?
-    {
-        return 0.0f;
-    }
+    return 0.0f;
 }
 
 
@@ -371,23 +316,14 @@ float Oscillator::convertVoltage(bool voltageConvertActive, float resistance, fl
 //Thing 7) 
 struct LFO
 {
-    FIXME clean up blank lines
     int waveType = 1; //1=sine 2=saw 3=square
-    
     float LfoRate = 20.0f;
-    
     int phaseStartPos = 1;  //1-100
-    
     bool syncOn = false;
-    
     bool bipolarOn = true;
 
-
-    
-    float modulateCutoff(float lfoRate, bool syncOn = false); //returns filter frequency after being modulated
-    
+    float modulateCutoff(float lfoRate, bool syncOn = false); //returns filter frequency after being modulated    
     float changePitch(float pitchChangeAmount, float pitch); //returns new pitch, expressed in Hertz
-    
     void adjustFrequency(int freqHz);
 };
 float LFO::modulateCutoff(float lfoRate, bool syncOff)
@@ -396,12 +332,12 @@ float LFO::modulateCutoff(float lfoRate, bool syncOff)
     {
         return lfoRate * phaseStartPos;//10;
     }
-        return lfoRate;
+    return lfoRate;
 }
 
 float LFO::changePitch(float pitchChangeAmount, float pitch)
 {  
-        return pitch + pitchChangeAmount; FIXME indentation
+    return pitch + pitchChangeAmount; 
 }
 
 void LFO::adjustFrequency(int freqHz)
@@ -413,28 +349,20 @@ void LFO::adjustFrequency(int freqHz)
 //Thing 8) 
 struct Display
 {
-    FIXME clean up blank lines
     int screenRes = 1080;
-    
     int pixelSize = 2;
-    
     float displayWidth = 7.2f;
-    
     char displayColor = 'b'; //b = blue r = red
-    
-    std::string displayTechnology = "LED";
-
+    int displayTechnology = 'L';//L for LED; O for OLED
     
     void displaySettings(char newDisplayColor);
-    
     bool energyConsumption(int wattsUsed); //returns true if it triggers a blown fuse.
-    
     float displayBritenessDim (bool powerSaver = true, int lumens = 100, int hoursOn = 1); //returns the power consumed at this new brightness level
 };
  
 void Display::displaySettings(char newDisplayColor)
 {
-    if (displayTechnology == "OLED") FIXME newDisplayColor is a single char, not an array of char, which is what "OLED" is.
+    if (displayTechnology == 'L') 
     {
         newDisplayColor = 'r';
     }
@@ -450,44 +378,33 @@ float Display::displayBritenessDim (bool powerSaver, int lumens, int hoursOn)
         std::cout << "Powersaver on\n.";
     }
     return lumens * hoursOn;
-    FIXME clean up blank lines
 }
 
 bool Display::energyConsumption(int wattsUsed)
 {
     return wattsUsed > 100;
-   FIXME clean up blank lines
 }
 
 
 //Thing 9) 
 struct FXSection
 {
-    FIXME clean up blank lines
     float reverbAmount = 50;
-    
     int distAmount = 1;
-    
     int wetSignal = 50;
-    
     int delayType = 1; //1 = pingpong 2 = tape
-    
     int reverbTypeA = 1; //1 = plate 2 = spring
 
-
-    
-    void delayActive(bool delayOn = false); 
-    
+    void delayActive(bool delayOn = false);     
     float reverbOutput(int reverbType, bool reverbOn = true); //returns one sample of computed reverb
-    
     void saturationActive(int distAmount2, bool active);
 };
 void FXSection::delayActive(bool delayOn)
 {
     if (delayOn == true)
     {
-        wetSignal = 75;
-        delayType = 1;
+    wetSignal = 75;
+    delayType = 1;
     }
 }
 
@@ -497,7 +414,7 @@ float FXSection::reverbOutput(int reverbType, bool reverbOn)
     {
         return reverbType * reverbAmount;
     }
-        return 0.0f;
+    return 0.0f;
 }
 
 void FXSection::saturationActive(int distAmount2, bool active)
@@ -509,30 +426,20 @@ void FXSection::saturationActive(int distAmount2, bool active)
 //Thing 10) 
 struct Synthesizer
 {
-FIXME clean up blank lines
     Filter filterA;
-   
     LFO lfo1;
-    
     Oscillator osc1;
-    
     Display display;
-    
     FXSection fxtab1;
-
    
     void sequenceNotesOn();
-    
     float playSound(int soundNum, float numSamplesToPlay, float volumeLevel); //returns the volume level in decibels
-
     void handleKeyPress(int keyNumPressed);
-    
     void synthOutput(int style = 1); //1=up 2=down
 };
 
 void Synthesizer::sequenceNotesOn()
 {
-    FIXME clean up blank lines
     filterA.frequencyRange = 20.0f;
     lfo1.bipolarOn = true;
     lfo1.waveType = 1; //1=sine 2=saw 3=square
@@ -540,8 +447,6 @@ void Synthesizer::sequenceNotesOn()
     lfo1.phaseStartPos = 50;  //1-100
     lfo1.syncOn = true;
     lfo1.bipolarOn = true;
-    
- 
 }
 
 float Synthesizer::playSound(int soundNum, float numSamplesToPlay, float volumeLevel)
@@ -585,7 +490,6 @@ void Synthesizer::handleKeyPress(int keyNumPressed)
 
 void Synthesizer::synthOutput(int style)
 {
-    FIXME clean up blank lines
     if( style == 1)
     {
         sequenceNotesOn();
@@ -593,7 +497,11 @@ void Synthesizer::synthOutput(int style)
         lfo1.changePitch(10.2f,2.2f);
         fxtab1.reverbOutput(10, true);
     }
-    FIXME what if the style is not 1?
+    sequenceNotesOn();
+    playSound(33,22,333);
+    lfo1.changePitch(11.2f,5.2f);
+    fxtab1.reverbOutput(18, true);
+    //FIXME what if the style is not 1?
 }
  /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
