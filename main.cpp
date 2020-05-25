@@ -403,8 +403,8 @@ void FXSection::delayActive(bool delayOn)
 {
     if (delayOn == true)
     {
-    wetSignal = 75;
-    delayType = 1;
+        wetSignal = 75;
+        delayType = 1;
     }
 }
 
@@ -497,11 +497,14 @@ void Synthesizer::synthOutput(int style)
         lfo1.changePitch(10.2f,2.2f);
         fxtab1.reverbOutput(10, true);
     }
-    sequenceNotesOn();
-    playSound(33,22,333);
-    lfo1.changePitch(11.2f,5.2f);
-    fxtab1.reverbOutput(18, true);
-    //FIXME what if the style is not 1?
+    else
+    {
+        sequenceNotesOn();
+        playSound(33,22,333);
+        lfo1.changePitch(11.2f,5.2f);
+        fxtab1.reverbOutput(18, true);
+    }
+        //FIXME what if the style is not 1?
 }
  /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
