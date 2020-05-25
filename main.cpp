@@ -15,8 +15,59 @@ Create a branch named Part2
     You'll need to insert the Person struct from the video in the space below.
  */
 
+#include <string>
+#include <iostream>
 
+struct Person
+{
+    int age;
+    int height;
+    float hairLength;
+    float GPA;
+    unsigned int SATScore;
+    int distanceTravelled;
 
+    struct Foot
+    {
+        int length = 1;
+        float width;
+        float shoeSize;
+        void stepForward();
+        int stepSize(int howLong);
+    };
+    Foot rightFoot;
+    Foot leftFoot;
+    void run(int howFast, bool startWithLeftFoot);
+    
+};
+void Person::Foot::stepForward()
+{
+     length += 2;
+}
+int Person::Foot::stepSize(int howLong)
+{
+    //length = 2;
+    howLong = length + length;
+    return howLong; 
+    
+}
+
+void Person::run(int howFast, bool startWithLeftFoot)
+{
+    if(startWithLeftFoot == true)
+    {
+        howFast = 10;
+        leftFoot.stepForward();
+        rightFoot.stepForward();
+    }
+    else
+    {
+        rightFoot.stepForward();
+        leftFoot.stepForward();
+    }
+    distanceTravelled += rightFoot.stepSize(5) + leftFoot.stepSize(4);
+
+}
 
 
  /*
@@ -32,247 +83,429 @@ Create a branch named Part2
 
 //1)
 struct Skateboard
-{//5 properties:
-    //1) Grip tape color
+{
     std::string gripTapeColor = "Green";
-    //2) Hardness of Wheels
     int wheelsHardness = 99;
-    //3) Brand of Trucks
     std::string truckBrand = "Independent";
-    //4) Age of Bearings
     int bearingAgeYears = 2;
-    //5) Type of Wood
     std::string woodType = "oak";
-//3 things it can do:
-    //1) roll
-    void rollDownStreet(int speed);
-    //2) slide
-    void railSlide(bool frontSide = true);
-    //3) flip
-    void kickFlip(int degree = 360);
+  
+    float rollDownStreet(int speed); //returns how far you roll
+    double railSlide(bool frontSide = true, double velocity = 10, double friction = 10); //returns the distance slid
+    bool kickFlip(int degree = 360); //returns true if the kickflip was successfully performed.
 };
 
+float Skateboard::rollDownStreet(int speed)
+{
+    if (speed > 20)
+    {
+        std::cout << "Slow Down\n.";
+    }
+    return speed; 
+}
 
-//2) 
+double Skateboard::railSlide(bool frontSide, double velocity, double friction)
+{
+    if (frontSide)
+    {
+        std::cout << "Now try it backside, dude!\n.";
+    }
+    else
+    {
+        std::cout << "Now try it frontside, dude!\n.";
+    }
+    return velocity + friction;
+}
+
+bool Skateboard::kickFlip(int degree)
+{
+    if (degree == 360)
+    {
+        std::cout << "rad!\n.";
+        return true;
+    }
+    return false;
+}
+
+
 struct Car
 {
-//5 properties:	
-    //1) Brand of Radio	    
     std::string radioBrand = "Sony";
-    //2) Number of Tires	    
     int numTires = 4;
-    //3) Size of Engine	    
     int engineSize = 4600;
-    //4) Brand of Rims	    
     std::string rimBrand = "MSR";
-    //5) Count of Seats
-    int seatCount = 2;	    
-//3 things it can do:	
-    //1) Drive	
-    void drive(int speed);    
-    //2) Park
-    void park(int parkingStallNumber);	   
-    //3) Stop
-    void stop(int stopDistance);
+    int seatCount = 2;
+
+    int drive(int speed, int time);    //returns how far you drove
+    void park(int parkingStallNumber);
+    bool stop(int stopDistance); //returns true if you stopped in time.
 };
  
+int Car::drive(int speed, int time)
+{
+    return speed * time;
+}
 
+void Car::park(int parkingStallNumber)
+{
+    if (parkingStallNumber == 3)
+    {
+        std::cout << "Parking Stall" << parkingStallNumber << "is not paid\n.";
+    }
+}
+bool Car::stop(int stopDistance)
+{
+    if (stopDistance >= 30)
+    {
+        std::cout << "Crash!\n.";
+        return false;
+    }
+    return true;
+}
 
-//3)
 struct Computer
 {
-//5 properties:
-    //1) Feel of keys
     int keyFeel = 2;
-    //2) Resolution of Monitor
     int monitorResolution = 1080;
-    //3) Kinds of indictor lights
     std::string indicatorLightKind = "LED";
-    //4) Number of buttons
     int buttonCount = 3;
-    //5) Speed of Processor
     float processorSpeed = 4.0f;
-//3 things it can do:
-    //1) do taxes
-    void runQuickbooks(bool isQbInstalled = true);
-    //2) play music
-    void playMusic(int howLoud = 11); //play it loud!
-    //3) display numbers
-    void displayNumbers(int numberCount);
+    
+    bool runQuickbooks(bool isQbInstalled = true); //returns true if it ran successfully
+    bool playMusic(int howLoud = 11); //returns true if hearing damage occurred
+    void displayVolume(int loudness = 1);
 };
 
+bool Computer::runQuickbooks(bool isQBInstalled)
+{
+    if (isQBInstalled == false)
+    {
+        return false;
+    }
+    return true;
+}
 
+void Computer::displayVolume(int loudness)
+{
+    loudness = 11;
+}
+bool Computer::playMusic(int howLoud)
+{
+    int loudness;
+    if (howLoud == 11)
+    {
+        return true;
+    }
+    loudness = 0; //there is only one loudness and that's 11 or turn it off!!!!
+    return false;
+}
 //4)
 struct MidiController
 {
-//5 properties:
-    //1) Number of knobs
     int knobCount = 16;
-    //2) Kinds of buttons
     char buttonStyle = 'l';
-    //3) Range of faders
     int faderRange = 10;
-    //4) Size of display
     float displaySizeInches = 7.2f;
-    //5) Types of pads
     std::string padType = "lit";
 
-//3 things it can do:
-    //1) control synth
     void controlSynth(int midiMessage);
-    //2) adjust volume
-    void adjustVolume(int midiMessage = 7);
-    //3) change bank
+    float adjustVolume(int midiMessage = 7); //returns the volume level in decibels
     void changeBank(int bankNumber);
 };
 
+void MidiController::controlSynth(int midiMessage)
+{
+    if (midiMessage == 74)
+    {
+        std::cout << "cut off adjusting\n.";
+    }
+}
+
+float MidiController::adjustVolume(int midiMessage)
+{
+    if (midiMessage == 7)
+    {
+        return faderRange;
+    }
+    return 0.1f;
+}
+
+void MidiController::changeBank(int bankNumber)
+{
+    std::cout << "bank" << bankNumber << "selected\n.";
+}
 
 //Thing 5) 
 struct Filter
 {
-    //1) Filter Type
     std::string filterType = "LP";
-    //2) Range of Frequency
     float frequencyRange = 20000.0F;
-    //3) Amount of Resonance
     int rezAmount = 1; //1-100
-    //4) Amount of modulation
     int modAmount = 1; //1-100
-    //5) Frequency of Cutoff
     float cutOffFrequency = 20.0f;
-//3 things it can do:
-    //1) make a sound darker
-    void soundTone(float cutoffFrequency = 20.0f);
-    //2) make the sound sharper
-    void addResonance(int rezAmount);
-    //3) make the sound brighter
+    void getSoundTone(float cutoffFrequency = 20.0f,float freqRangeRemaining = 0.0f);
+    int addResonance(int rezAmount, int resonance); //returns the total resonance amount
     void cutLowFreq(float cutOffFrequency = 1000.0f);
 };
+
+void Filter::getSoundTone(float cutoffFrequency, float freqRangeRemaining)
+{
+    if (cutOffFrequency < frequencyRange)
+    {
+        freqRangeRemaining = (frequencyRange - cutOffFrequency);
+        std::cout << freqRangeRemaining;
+    }
+    else
+    {
+        std::cout << cutoffFrequency;
+    } 
+}
+void addResonance(int rezAmount, int resonance)
+{
+    rezAmount = 2;
+    resonance = resonance + rezAmount;
+}
+
+
 
 
 //Thing 6) 
 struct Oscillator
 {
-    //1) Amount of Frequency Modulation
-    int freqMod = 1; //1-10
-    //2) Type of Waveform
+    int oscOutput = 1; //1-10
     int waveType = 1; //1=sine 2=saw 3=square
-    //3) Amount of course pitch change
     int maxPitchChange = 24; //semitones
-    //4) Sync
     bool syncOn = false;
-    //5) Amount of Volume
     int maxVolume = 1; //1-11
-//3 things it can do:
-    
-    //1) Modulate another Oscillator
-    bool osc2Mod = true;
-    //2) Generates a signal
+
+    float osc2Mod(bool osc2ModActive = false); //returns the new OSC output value.    
     void signalGen(int frequency);
-    //3) Converts DC to AC
-    bool voltageConversion = true;
+    float convertVoltage(bool voltageCovertActive, float resistance, float current); //returns the converted voltage level
 };
- 
+
+
+float Oscillator::osc2Mod(bool osc2ModActive)
+{
+    if (osc2ModActive == true)
+    {
+        return 33.3f;
+    }
+    return 0.0f;
+      
+}
+
+void Oscillator::signalGen(int frequency)
+{
+    if (syncOn == true)
+    {
+        std::cout << frequency;
+    }
+}
+
+float Oscillator::convertVoltage(bool voltageConvertActive, float resistance, float current)
+{
+    if (voltageConvertActive == true)
+    {
+        return resistance * current;
+    }
+    return 0.0f;
+}
+
 
 
 //Thing 7) 
 struct LFO
 {
-    //1) Type of waveform
     int waveType = 1; //1=sine 2=saw 3=square
-    //2) Rate of LFO
     float LfoRate = 20.0f;
-    //3) Phase start position
     int phaseStartPos = 1;  //1-100
-    //4) Sync with DAW Tempo
     bool syncOn = false;
-    //5) Polarity
     bool bipolarOn = true;
 
-//3 things it can do:
-    //1) Modulate Cutoff
-    void modulateCutoff(float lfoRate, bool syncOn = false);
-    //2) Change Pitch
-    void changePitch(int pitchChangeAmount);
-    //3) Adjust Frequency
+    float modulateCutoff(float lfoRate, bool syncOn = false); //returns filter frequency after being modulated    
+    float changePitch(float pitchChangeAmount, float pitch); //returns new pitch, expressed in Hertz
     void adjustFrequency(int freqHz);
 };
+float LFO::modulateCutoff(float lfoRate, bool syncOff)
+{
+    if (syncOff == true)
+    {
+        return lfoRate * phaseStartPos;//10;
+    }
+    return lfoRate;
+}
+
+float LFO::changePitch(float pitchChangeAmount, float pitch)
+{  
+    return pitch + pitchChangeAmount; 
+}
+
+void LFO::adjustFrequency(int freqHz)
+{
+    std::cout << freqHz;
+}
 
 
 //Thing 8) 
 struct Display
 {
-    //1) Resolution
     int screenRes = 1080;
-    //2) Pixel Size
     int pixelSize = 2;
-    //3) Width
     float displayWidth = 7.2f;
-    //4) Color
     char displayColor = 'b'; //b = blue r = red
-    //5) Display Technology
-    std::string displayTechnology = "LED";
-//3 things it can do:
-    //1) Show settings
-    void displaySettings(char displayColor = 'r');
-    //2) Consume electric
-    void energyConsumption();
-    //3) Glow
-    void displayBritenessDim (bool powerSaver = true, int lumens = 100);
+    int displayTechnology = 'L';//L for LED; O for OLED
+    
+    void displaySettings(char newDisplayColor);
+    bool energyConsumption(int wattsUsed); //returns true if it triggers a blown fuse.
+    float displayBritenessDim (bool powerSaver = true, int lumens = 100, int hoursOn = 1); //returns the power consumed at this new brightness level
 };
  
+void Display::displaySettings(char newDisplayColor)
+{
+    if (displayTechnology == 'L') 
+    {
+        newDisplayColor = 'r';
+    }
+    else
+    {
+        newDisplayColor = 'b';
+    } 
+}
+float Display::displayBritenessDim (bool powerSaver, int lumens, int hoursOn)
+{
+    if (powerSaver == true)
+    {
+        std::cout << "Powersaver on\n.";
+    }
+    return lumens * hoursOn;
+}
+
+bool Display::energyConsumption(int wattsUsed)
+{
+    return wattsUsed > 100;
+}
 
 
 //Thing 9) 
 struct FXSection
 {
-    //1) Amount of Reverb
-    int reverbAmount = 50;
-    //2) Amount of distortion
+    float reverbAmount = 50;
     int distAmount = 1;
-    //3) Amount of Wet Signal (dry/wet)
     int wetSignal = 50;
-    //4) Delay type
     int delayType = 1; //1 = pingpong 2 = tape
-    //5) Reverb type
-    int reverbType = 1; //1 = plate 2 = spring
+    int reverbTypeA = 1; //1 = plate 2 = spring
 
-//3 things it can do:
-    //1) Make the sound echo
-    void delayActive(bool delayOn = false); 
-    //2) Reverberate the sound
-    void reverbOutput(int reverbtype, bool reverbOn = true);
-    //3) Saturate the sound
-    void saturationActive(int distAmount, bool wetSignal());
+    void delayActive(bool delayOn = false);     
+    float reverbOutput(int reverbType, bool reverbOn = true); //returns one sample of computed reverb
+    void saturationActive(int distAmount2, bool active);
 };
- 
+void FXSection::delayActive(bool delayOn)
+{
+    if (delayOn == true)
+    {
+        wetSignal = 75;
+        delayType = 1;
+    }
+}
 
+float FXSection::reverbOutput(int reverbType, bool reverbOn)
+{
+    if (reverbOn == true)
+    {
+        return reverbType * reverbAmount;
+    }
+    return 0.0f;
+}
+
+void FXSection::saturationActive(int distAmount2, bool active)
+{
+    distAmount2 = 50;
+    active = false;
+}
 
 //Thing 10) 
 struct Synthesizer
 {
-//5 properties:
-    //1) Filter
     Filter filterA;
-    //2) LFO
     LFO lfo1;
-    //3) Oscillator
     Oscillator osc1;
-    //4) Display
     Display display;
-    //5) FX Section
     FXSection fxtab1;
-//3 things it can do:
-    //1) Sequence
+   
     void sequenceNotesOn();
-    //2) Play sounds
-    void playSound(Synthesizer(std::string brand));
-    //3) Arpeggiate
-    void synthArpeggiate(int style = 1); //1=up 2=down
+    float playSound(int soundNum, float numSamplesToPlay, float volumeLevel); //returns the volume level in decibels
+    void handleKeyPress(int keyNumPressed);
+    void synthOutput(int style = 1); //1=up 2=down
 };
 
+void Synthesizer::sequenceNotesOn()
+{
+    filterA.frequencyRange = 20.0f;
+    lfo1.bipolarOn = true;
+    lfo1.waveType = 1; //1=sine 2=saw 3=square
+    lfo1.LfoRate = 20.0f;
+    lfo1.phaseStartPos = 50;  //1-100
+    lfo1.syncOn = true;
+    lfo1.bipolarOn = true;
+}
 
+float Synthesizer::playSound(int soundNum, float numSamplesToPlay, float volumeLevel)
+{
+    /*
+    this should decide WHICH sound is played.
+    it shouldn't rely on whether or not the key is key is presed. 
 
+    it's the other way around. 
+
+    if you press the key, you playSound()
+
+    Now, those function arguments make sense based on WHICH KEY you press.   
+
+    Press Middle C?   play soundNum 35
+    Press G5?  Play sound num whatever...
+
+    */
+
+    std::cout << "you played the sound: " << soundNum;
+    std::cout << " for " << numSamplesToPlay << " samples,";
+    std::cout << " at a volume level of " << volumeLevel << "\n";
+    return volumeLevel;
+}
+
+void Synthesizer::handleKeyPress(int keyNumPressed)
+{
+    if( keyNumPressed == 64 )
+    {
+        playSound(35, 2048, 0.5);
+    }
+    else if( keyNumPressed == 66 )
+    {
+        playSound( 48, 1024, 0.75);
+    }
+    else
+    {
+        playSound( keyNumPressed, 512, 1.f );
+    }
+}
+
+void Synthesizer::synthOutput(int style)
+{
+    if( style == 1)
+    {
+        sequenceNotesOn();
+        playSound(44,444,333);
+        lfo1.changePitch(10.2f,2.2f);
+        fxtab1.reverbOutput(10, true);
+    }
+    else
+    {
+        sequenceNotesOn();
+        playSound(33,22,333);
+        lfo1.changePitch(11.2f,5.2f);
+        fxtab1.reverbOutput(18, true);
+    }
+        //FIXME what if the style is not 1?
+}
  /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
@@ -287,8 +520,14 @@ struct Synthesizer
  Wait for my code review.
  */
 
-#include <iostream>
+
 int main()
 {
+    Synthesizer synth;
+    synth.handleKeyPress(64);
+    synth.handleKeyPress(66);
+    synth.handleKeyPress(33);
+
     std::cout << "good to go!" << std::endl;
 }
+
