@@ -66,24 +66,39 @@ int main()
 
 
 //1)
+
 struct Skateboard
 {
-    std::string gripTapeColor = "Green";
-    int wheelsHardness = 99;
-    std::string truckBrand = "Independent";
-    int bearingAgeYears = 2;
-    std::string woodType = "oak";
-  
+    std::string gripTapeColor; //= "Green";
+    int wheelsHardness; //= 99;
+    std::string truckBrand; //= "Independent";
+    int bearingAgeYears; //= 2;
+    std::string woodType; //= "oak";
+    Skateboard();
+
     float rollDownStreet(int speed); //returns how far you roll
     double railSlide(bool frontSide = true, double velocity = 10, double friction = 10); //returns the distance slid
     bool kickFlip(int degree = 360); //returns true if the kickflip was successfully performed.
 };
+
+Skateboard::Skateboard()
+{
+    gripTapeColor = "";
+    wheelsHardness = 0;
+    truckBrand = "";
+    bearingAgeYears = 0;
+    woodType = "";
+}
 
 float Skateboard::rollDownStreet(int speed)
 {
     if (speed > 20)
     {
         std::cout << "Slow Down\n.";
+    }
+    else
+    {
+        std::cout << "That's a good speed.\n";
     }
     return speed; 
 }
@@ -111,6 +126,12 @@ bool Skateboard::kickFlip(int degree)
     return false;
 }
 
+/*    Skateboard skate;              //3) instantiating a UDT named 'foo' in main()
+    skate.rollDownStreet(19);     //4) calling a member function of the UDT instance.
+    //return 0;
+*/
+
+
 
 struct Car
 {
@@ -119,14 +140,24 @@ struct Car
     int engineSize = 4600;
     std::string rimBrand = "MSR";
     int seatCount = 2;
-
+    Car();
     int drive(int speed, int time);    //returns how far you drove
     void park(int parkingStallNumber);
     bool stop(int stopDistance); //returns true if you stopped in time.
 };
- 
+
+Car::Car()
+{
+    radioBrand = "Sony";
+    numTires = 4;
+    engineSize = 4600;
+    rimBrand = "MSR";
+    seatCount = 2;
+}
+
 int Car::drive(int speed, int time)
 {
+    std::cout << "Your distance is " << speed * time << ".\n";
     return speed * time;
 }
 
@@ -154,11 +185,21 @@ struct Computer
     std::string indicatorLightKind = "LED";
     int buttonCount = 3;
     float processorSpeed = 4.0f;
-    
+    Computer();
+
     bool runQuickbooks(bool isQbInstalled = true); //returns true if it ran successfully
     bool playMusic(int howLoud = 11); //returns true if hearing damage occurred
     void displayVolume(int loudness = 1);
 };
+
+Computer::Computer()
+{
+    keyFeel = 2;
+    monitorResolution = 1080;
+    indicatorLightKind = "LED";
+    buttonCount = 3;
+    processorSpeed = 4.0f; 
+}
 
 bool Computer::runQuickbooks(bool isQBInstalled)
 {
@@ -171,7 +212,7 @@ bool Computer::runQuickbooks(bool isQBInstalled)
 
 void Computer::displayVolume(int loudness)
 {
-    loudness = 11;
+    std::cout << "You have turned up the volume to " << loudness << ".\n";  
 }
 bool Computer::playMusic(int howLoud)
 {
@@ -191,11 +232,21 @@ struct MidiController
     int faderRange = 10;
     float displaySizeInches = 7.2f;
     std::string padType = "lit";
+    MidiController();
 
     void controlSynth(int midiMessage);
     float adjustVolume(int midiMessage = 7); //returns the volume level in decibels
     void changeBank(int bankNumber);
 };
+
+MidiController::MidiController()
+{
+    knobCount = 16;
+    buttonStyle = 'l';
+    faderRange = 10;
+    displaySizeInches = 7.2f;
+    padType = "lit";
+}
 
 void MidiController::controlSynth(int midiMessage)
 {
@@ -216,33 +267,47 @@ float MidiController::adjustVolume(int midiMessage)
 
 void MidiController::changeBank(int bankNumber)
 {
-    std::cout << "bank" << bankNumber << "selected\n.";
+    std::cout << "Bank " << bankNumber << " selected.\n";
 }
 
 //Thing 5) 
 struct Filter
 {
     std::string filterType = "LP";
-    float frequencyRange = 20000.0F;
+    float maxCutOffFreq = 20000.0F;
     int rezAmount = 1; //1-100
     int modAmount = 1; //1-100
-    float cutOffFrequency = 20.0f;
-    void getSoundTone(float cutoffFrequency = 20.0f,float freqRangeRemaining = 0.0f);
+    float cutOffFrequency;
+    float freqRangeRemaining =0.0f;
+
+    Filter();
+    void getSoundTone(float newCutOffFrequency);
     int addResonance(int rezAmount, int resonance); //returns the total resonance amount
     void cutLowFreq(float cutOffFrequency = 1000.0f);
 };
 
-void Filter::getSoundTone(float cutoffFrequency, float freqRangeRemaining)
+Filter::Filter()
 {
-    if (cutOffFrequency < frequencyRange)
+    filterType = "LP";
+    maxCutOffFreq = 20000.0F;
+    rezAmount = 1; //1-100
+    modAmount = 1; //1-100
+    cutOffFrequency = 0.0f;
+    freqRangeRemaining = 0.0f;
+}
+ 
+void Filter::getSoundTone(float newCutOffFrequency)
+{
+    if (newCutOffFrequency < maxCutOffFreq)
     {
-        freqRangeRemaining = (frequencyRange - cutOffFrequency);
-        std::cout << freqRangeRemaining;
+        freqRangeRemaining = (maxCutOffFreq - newCutOffFrequency);
+        std::cout << freqRangeRemaining << std::endl;
     }
     else
     {
-        std::cout << cutoffFrequency;
+        std::cout << "You are at max cutoff" << std::endl;
     } 
+    newCutOffFrequency = cutOffFrequency; //setting new cut off to cut off.  Will this get erased by the constructor?
 }
 void addResonance(int rezAmount, int resonance)
 {
@@ -261,19 +326,30 @@ struct Oscillator
     int maxPitchChange = 24; //semitones
     bool syncOn = false;
     int maxVolume = 1; //1-11
+    Oscillator();
 
     float osc2Mod(bool osc2ModActive = false); //returns the new OSC output value.    
     void signalGen(int frequency);
     float convertVoltage(bool voltageCovertActive, float resistance, float current); //returns the converted voltage level
 };
 
+Oscillator::Oscillator()
+{
+    oscOutput = 1; //1-10
+    waveType = 1; //1=sine 2=saw 3=square
+    maxPitchChange = 24; //semitones
+    syncOn = false;
+    maxVolume = 1; //1-11
+}
 
 float Oscillator::osc2Mod(bool osc2ModActive)
 {
     if (osc2ModActive == true)
     {
+        std::cout << "Oscillator 1 modulated by Oscillator 2. Frequency 33.3.\n";
         return 33.3f;
     }
+    std::cout << "No modulation. Frequency 0.0.\n";
     return 0.0f;
       
 }
@@ -305,11 +381,24 @@ struct LFO
     int phaseStartPos = 1;  //1-100
     bool syncOn = false;
     bool bipolarOn = true;
-
+    
     float modulateCutoff(float lfoRate, bool syncOn = false); //returns filter frequency after being modulated    
     float changePitch(float pitchChangeAmount, float pitch); //returns new pitch, expressed in Hertz
     void adjustFrequency(int freqHz);
+    LFO();
 };
+
+LFO::LFO()
+{
+    waveType = 1; //1=sine 2=saw 3=square
+    LfoRate = 20.0f;
+    phaseStartPos = 1;  //1-100
+    syncOn = false;
+    bipolarOn = true;
+}
+
+
+
 float LFO::modulateCutoff(float lfoRate, bool syncOff)
 {
     if (syncOff == true)
@@ -318,9 +407,10 @@ float LFO::modulateCutoff(float lfoRate, bool syncOff)
     }
     return lfoRate;
 }
-
+//lfo1.changePitch(12, 36);
 float LFO::changePitch(float pitchChangeAmount, float pitch)
 {  
+    std::cout << "New pitch is " << pitch + pitchChangeAmount << ".\n" ;
     return pitch + pitchChangeAmount; 
 }
 
@@ -338,12 +428,25 @@ struct Display
     float displayWidth = 7.2f;
     char displayColor = 'b'; //b = blue r = red
     int displayTechnology = 'L';//L for LED; O for OLED
+    Display();
+    int electricUsed;
     
     void displaySettings(char newDisplayColor);
     bool energyConsumption(int wattsUsed); //returns true if it triggers a blown fuse.
     float displayBritenessDim (bool powerSaver = true, int lumens = 100, int hoursOn = 1); //returns the power consumed at this new brightness level
 };
- 
+
+Display::Display()
+{
+    screenRes = 1080;
+    pixelSize = 2;
+    displayWidth = 7.2f;
+    displayColor = 'b'; //b = blue r = red
+    displayTechnology = 'L';//L for LED; O for OLED
+    electricUsed =0;
+    
+} 
+
 void Display::displaySettings(char newDisplayColor)
 {
     if (displayTechnology == 'L') 
@@ -355,13 +458,19 @@ void Display::displaySettings(char newDisplayColor)
         newDisplayColor = 'b';
     } 
 }
-float Display::displayBritenessDim (bool powerSaver, int lumens, int hoursOn)
+float Display::displayBritenessDim (bool powerSaver, int watts, int hoursOn)
 {
+    electricUsed = watts * hoursOn;
     if (powerSaver == true)
     {
-        std::cout << "Powersaver on\n.";
+        std::cout << "Powersaver on.\n";
+        
     }
-    return lumens * hoursOn;
+    else
+    {
+    std::cout << "You have used " << electricUsed << " today. Turn off you computer. \n";
+    }
+    return electricUsed;
 }
 
 bool Display::energyConsumption(int wattsUsed)
@@ -375,32 +484,65 @@ struct FXSection
 {
     float reverbAmount = 50;
     int distAmount = 1;
-    int wetSignal = 50;
+    int delayWetSignal = 50;
     int delayType = 1; //1 = pingpong 2 = tape
     int reverbTypeA = 1; //1 = plate 2 = spring
+    FXSection();
 
-    void delayActive(bool delayOn = false);     
-    float reverbOutput(int reverbType, bool reverbOn = true); //returns one sample of computed reverb
+    void delayActive(bool delayOn, int wetSignalChange);     
+    int delayTypeOut(int delayType); 
     void saturationActive(int distAmount2, bool active);
 };
-void FXSection::delayActive(bool delayOn)
+
+FXSection::FXSection()
+{
+    reverbAmount = 50;
+    distAmount = 1;
+    delayWetSignal = 50;
+    delayType = 1; //1 = pingpong 2 = tape
+    reverbTypeA = 1; //1 = plate 2 = spring
+}
+int FXSection::delayTypeOut(int delayTypeSelector) 
+{
+    if (delayTypeSelector == 1)
+    {
+        std::cout << "PingPong Delay \n";
+        delayType = 1;
+    }
+    else
+    {
+        std::cout << "Tape Delay \n";
+        delayType = 2;
+    }
+    return delayType;
+}
+void FXSection::delayActive(bool delayOn, int wetSignalChange)
 {
     if (delayOn == true)
     {
-        wetSignal = 75;
-        delayType = 1;
+        delayWetSignal += wetSignalChange;
+        std::cout << "delay type is " << delayType <<std::endl;//i want to nest the previous function here so it says Ping Pong or Tape Delay here instead of the int.
+        std::cout << "WetSignal = " << delayWetSignal << std::endl;
     }
+    else
+        std::cout << "Delay inactive.\n";
 }
 
-float FXSection::reverbOutput(int reverbType, bool reverbOn)
+/*int FXSection::delayTypeOut(int delayTypeSelector) 
 {
-    if (reverbOn == true)
+    if (delayTypeSelector == 1)
     {
-        return reverbType * reverbAmount;
+        delayType = 1;
+        std::cout << "PingPong Delay \n";
     }
-    return 0.0f;
+    else
+    {
+        delayType = 2;
+        std::cout << "Tape Delay \n";
+    }
+    return delayType;
 }
-
+*/
 void FXSection::saturationActive(int distAmount2, bool active)
 {
     distAmount2 = 50;
@@ -424,7 +566,7 @@ struct Synthesizer
 
 void Synthesizer::sequenceNotesOn()
 {
-    filterA.frequencyRange = 20.0f;
+    filterA.cutOffFrequency = 20.0f;
     lfo1.bipolarOn = true;
     lfo1.waveType = 1; //1=sine 2=saw 3=square
     lfo1.LfoRate = 20.0f;
@@ -479,16 +621,16 @@ void Synthesizer::synthOutput(int style)
         sequenceNotesOn();
         playSound(44,444,333);
         lfo1.changePitch(10.2f,2.2f);
-        fxtab1.reverbOutput(10, true);
+        
     }
     else
     {
         sequenceNotesOn();
         playSound(33,22,333);
         lfo1.changePitch(11.2f,5.2f);
-        fxtab1.reverbOutput(18, true);
+        
     }
-        //FIXME what if the style is not 1?
+        
 }
  /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
@@ -508,10 +650,40 @@ void Synthesizer::synthOutput(int style)
 int main()
 {
     Example::main();
+    Skateboard skate;  //3) instantiating a UDT named 'skate' in main()
+    skate.rollDownStreet(19);     //4) calling a member function of the UDT instance.
+    Car car;  
+    car.drive(1,2);    
+    car.drive(10,5); 
+    Computer c; //instantiating a UDT named "c"
+    c.displayVolume(11); //calling a member function of the UDT instance
+    MidiController fatboy;
+    fatboy.changeBank(16);
+    Filter f;
+    f.getSoundTone(210.f);
+    f.getSoundTone(20000.f);
+    Oscillator o; 
+    o.osc2Mod( true );
+    o.osc2Mod( false );
+    LFO lfo1;
+    lfo1.changePitch(12, 36);
+    lfo1.changePitch(36, -12);
+    Display display1;
+    display1. displayBritenessDim (true, 10, 10);
+    display1. displayBritenessDim (false, 200, 10);
+    FXSection fx1;
+    fx1.delayTypeOut(2);
+    fx1.delayActive(true,25);
+    fx1.delayTypeOut(1);
+    fx1.delayActive(true,-25); //takes previous
+    fx1.delayTypeOut(1);
+    fx1.delayActive(false,-25); //takes previous
+
     Synthesizer synth;
     synth.handleKeyPress(64);
     synth.handleKeyPress(66);
     synth.handleKeyPress(33);
+    
 
     std::cout << "good to go!" << std::endl;
 }
