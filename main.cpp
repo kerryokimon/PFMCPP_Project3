@@ -83,11 +83,11 @@ struct Skateboard
 
 Skateboard::Skateboard()
 {
-    gripTapeColor = "";
+    gripTapeColor = "Green";
     wheelsHardness = 0;
-    truckBrand = "";
+    truckBrand = "Independent";
     bearingAgeYears = 0;
-    woodType = "";
+    woodType = "oak";
 }
 
 float Skateboard::rollDownStreet(int speed)
@@ -468,7 +468,7 @@ float Display::displayBritenessDim (bool powerSaver, int watts, int hoursOn)
     }
     else
     {
-    std::cout << "You have used " << electricUsed << " today. Turn off you computer. \n";
+        std::cout << "You have used " << electricUsed << " today. Turn off you computer. \n";
     }
     return electricUsed;
 }
@@ -528,21 +528,7 @@ void FXSection::delayActive(bool delayOn, int wetSignalChange)
         std::cout << "Delay inactive.\n";
 }
 
-/*int FXSection::delayTypeOut(int delayTypeSelector) 
-{
-    if (delayTypeSelector == 1)
-    {
-        delayType = 1;
-        std::cout << "PingPong Delay \n";
-    }
-    else
-    {
-        delayType = 2;
-        std::cout << "Tape Delay \n";
-    }
-    return delayType;
-}
-*/
+
 void FXSection::saturationActive(int distAmount2, bool active)
 {
     distAmount2 = 50;
