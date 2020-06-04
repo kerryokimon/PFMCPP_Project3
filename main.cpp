@@ -486,6 +486,7 @@ struct FXSection
     int distAmount = 1;
     int delayWetSignal = 50;
     int delayType = 1; //1 = pingpong 2 = tape
+    std::string delayName;
     int reverbTypeA = 1; //1 = plate 2 = spring
     FXSection();
 
@@ -506,11 +507,13 @@ int FXSection::delayTypeOut(int delayTypeSelector)
 {
     if (delayTypeSelector == 1)
     {
+        delayName = "Ping Pong Delay";
         std::cout << "PingPong Delay \n";
         delayType = 1;
     }
     else
     {
+        delayName = "Ping Pong Delay";
         std::cout << "Tape Delay \n";
         delayType = 2;
     }
@@ -521,8 +524,9 @@ void FXSection::delayActive(bool delayOn, int wetSignalChange)
     if (delayOn == true)
     {
         delayWetSignal += wetSignalChange;
-        std::cout << "delay type is " << delayType <<std::endl;//i want to nest the previous function here so it says Ping Pong or Tape Delay here instead of the int.
+        std::cout << "delay type is " << delayTypeOut(delayType) <<std::endl;//i want to nest the previous function here so it says Ping Pong or Tape Delay here instead of the int.
         std::cout << "WetSignal = " << delayWetSignal << std::endl;
+        //auto out = delayTypeOut(delayType); //calls the member function
     }
     else
         std::cout << "Delay inactive.\n";
@@ -543,9 +547,29 @@ struct Synthesizer
     Oscillator osc1;
     Display display;
     FXSection fxtab1;
-   
-    void sequenceNotesOn();
-    float playSound(int soundNum, float numSamplesToPlay, float volumeLevel); //returns the volume level in decibels
+
+    void makeSound(float filterKnobChange, int resoKnobChange);
+};
+
+void Synthesizer::makeSound (float filterKnobChange, int resoKnobChange)
+{
+    if (filterKnobChange != 0.0f)
+    {
+        filterA.cutOffFrequency += filterKnobChange;
+        filterA.rezAmount += resoKnobChange;
+        std::cout << "Filter Cutoff: "  << filterA.cutOffFrequency << std::endl;
+        std::cout << "Resonance Amount: "  << filterA.rezAmount << std::endl;
+    }
+    else
+    {
+        filterA.rezAmount += resoKnobChange;
+        std::cout << "Filter Cutoff: "  << filterA.cutOffFrequency << "...unchanged" <<std::endl;
+        std::cout << "Resonance Amount: "  << filterA.rezAmount << std::endl;
+    }
+}
+
+/*    void sequenceNotesOn();
+    float playSound(int soundNum, float numSamplesToPlay, float volumeLevel()); //returns the volume level in decibels
     void handleKeyPress(int keyNumPressed);
     void synthOutput(int style = 1); //1=up 2=down
 };
@@ -563,7 +587,7 @@ void Synthesizer::sequenceNotesOn()
 
 float Synthesizer::playSound(int soundNum, float numSamplesToPlay, float volumeLevel)
 {
-    /*
+    
     this should decide WHICH sound is played.
     it shouldn't rely on whether or not the key is key is presed. 
 
@@ -577,7 +601,7 @@ float Synthesizer::playSound(int soundNum, float numSamplesToPlay, float volumeL
     Press G5?  Play sound num whatever...
 
     */
-
+/*
     std::cout << "you played the sound: " << soundNum;
     std::cout << " for " << numSamplesToPlay << " samples,";
     std::cout << " at a volume level of " << volumeLevel << "\n";
@@ -618,6 +642,7 @@ void Synthesizer::synthOutput(int style)
     }
         
 }
+*/
  /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
@@ -664,13 +689,18 @@ int main()
     fx1.delayActive(true,-25); //takes previous
     fx1.delayTypeOut(1);
     fx1.delayActive(false,-25); //takes previous
-
+    Synthesizer i;
+    i.makeSound (10, 10);
+    i.makeSound (22, 13);
+    i.makeSound (-55, -10);
+    i.makeSound (0, 10);
+/*
     Synthesizer synth;
     synth.handleKeyPress(64);
     synth.handleKeyPress(66);
     synth.handleKeyPress(33);
-    
-
+   
+*/
     std::cout << "good to go!" << std::endl;
-}
 
+}
