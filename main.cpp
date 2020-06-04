@@ -58,13 +58,6 @@ int main()
 } //end namespace Example
 
 //insert Example::main() into main() of user's repo.
-
-
-
-
-
-
-
 //1)
 
 struct Skateboard
@@ -130,8 +123,6 @@ bool Skateboard::kickFlip(int degree)
     skate.rollDownStreet(19);     //4) calling a member function of the UDT instance.
     //return 0;
 */
-
-
 
 struct Car
 {
@@ -224,6 +215,7 @@ bool Computer::playMusic(int howLoud)
     loudness = 0; //there is only one loudness and that's 11 or turn it off!!!!
     return false;
 }
+
 //4)
 struct MidiController
 {
@@ -315,9 +307,6 @@ void addResonance(int rezAmount, int resonance)
     resonance = resonance + rezAmount;
 }
 
-
-
-
 //Thing 6) 
 struct Oscillator
 {
@@ -371,8 +360,6 @@ float Oscillator::convertVoltage(bool voltageConvertActive, float resistance, fl
     return 0.0f;
 }
 
-
-
 //Thing 7) 
 struct LFO
 {
@@ -397,8 +384,6 @@ LFO::LFO()
     bipolarOn = true;
 }
 
-
-
 float LFO::modulateCutoff(float lfoRate, bool syncOff)
 {
     if (syncOff == true)
@@ -418,7 +403,6 @@ void LFO::adjustFrequency(int freqHz)
 {
     std::cout << freqHz;
 }
-
 
 //Thing 8) 
 struct Display
@@ -478,7 +462,6 @@ bool Display::energyConsumption(int wattsUsed)
     return wattsUsed > 100;
 }
 
-
 //Thing 9) 
 struct FXSection
 {
@@ -532,7 +515,6 @@ void FXSection::delayActive(bool delayOn, int wetSignalChange)
         std::cout << "Delay inactive.\n";
 }
 
-
 void FXSection::saturationActive(int distAmount2, bool active)
 {
     distAmount2 = 50;
@@ -568,94 +550,6 @@ void Synthesizer::makeSound (float filterKnobChange, int resoKnobChange)
     }
 }
 
-/*    void sequenceNotesOn();
-    float playSound(int soundNum, float numSamplesToPlay, float volumeLevel()); //returns the volume level in decibels
-    void handleKeyPress(int keyNumPressed);
-    void synthOutput(int style = 1); //1=up 2=down
-};
-
-void Synthesizer::sequenceNotesOn()
-{
-    filterA.cutOffFrequency = 20.0f;
-    lfo1.bipolarOn = true;
-    lfo1.waveType = 1; //1=sine 2=saw 3=square
-    lfo1.LfoRate = 20.0f;
-    lfo1.phaseStartPos = 50;  //1-100
-    lfo1.syncOn = true;
-    lfo1.bipolarOn = true;
-}
-
-float Synthesizer::playSound(int soundNum, float numSamplesToPlay, float volumeLevel)
-{
-    
-    this should decide WHICH sound is played.
-    it shouldn't rely on whether or not the key is key is presed. 
-
-    it's the other way around. 
-
-    if you press the key, you playSound()
-
-    Now, those function arguments make sense based on WHICH KEY you press.   
-
-    Press Middle C?   play soundNum 35
-    Press G5?  Play sound num whatever...
-
-    */
-/*
-    std::cout << "you played the sound: " << soundNum;
-    std::cout << " for " << numSamplesToPlay << " samples,";
-    std::cout << " at a volume level of " << volumeLevel << "\n";
-    return volumeLevel;
-}
-
-void Synthesizer::handleKeyPress(int keyNumPressed)
-{
-    if( keyNumPressed == 64 )
-    {
-        playSound(35, 2048, 0.5);
-    }
-    else if( keyNumPressed == 66 )
-    {
-        playSound( 48, 1024, 0.75);
-    }
-    else
-    {
-        playSound( keyNumPressed, 512, 1.f );
-    }
-}
-
-void Synthesizer::synthOutput(int style)
-{
-    if( style == 1)
-    {
-        sequenceNotesOn();
-        playSound(44,444,333);
-        lfo1.changePitch(10.2f,2.2f);
-        
-    }
-    else
-    {
-        sequenceNotesOn();
-        playSound(33,22,333);
-        lfo1.changePitch(11.2f,5.2f);
-        
-    }
-        
-}
-*/
- /*
- MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
-
- Commit your changes by clicking on the Source Control panel on the left, entering a message, and click [Commit and push].
- 
- If you didn't already: 
-    Make a pull request after you make your first commit
-    pin the pull request link and this repl.it link to our DM thread in a single message.
-
- send me a DM to review your pull request when the project is ready for review.
-
- Wait for my code review.
- */
 
 
 int main()
@@ -694,13 +588,6 @@ int main()
     i.makeSound (22, 13);
     i.makeSound (-55, -10);
     i.makeSound (0, 10);
-/*
-    Synthesizer synth;
-    synth.handleKeyPress(64);
-    synth.handleKeyPress(66);
-    synth.handleKeyPress(33);
-   
-*/
     std::cout << "good to go!" << std::endl;
 
 }
