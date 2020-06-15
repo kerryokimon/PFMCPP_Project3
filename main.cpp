@@ -39,26 +39,20 @@ int main()
 
 struct Skateboard
 {
-    std::string gripTapeColor; //= "Green";
-    int wheelsHardness; //= 99;
-    std::string truckBrand; //= "Independent";
-    int bearingAgeYears; //= 2;
-    std::string woodType; //= "oak";
-    Skateboard();
+    std::string gripTapeColor = "Green";
+    int wheelsHardness = 99;
+    std::string truckBrand = "Independent";
+    int bearingAgeYears = 2;
+    std::string woodType = "oak";
+
+    Skateboard(); //constructor in class
 
     float rollDownStreet(int speed); //returns how far you roll
     double railSlide(bool frontSide = true, double velocity = 10, double friction = 10); //returns the distance slid
     bool kickFlip(int degree = 360); //returns true if the kickflip was successfully performed.
 };
 
-Skateboard::Skateboard()
-{
-    gripTapeColor = "Green";
-    wheelsHardness = 0;
-    truckBrand = "Independent";
-    bearingAgeYears = 0;
-    woodType = "oak";
-}
+Skateboard::Skateboard() {}
 
 float Skateboard::rollDownStreet(int speed)
 {
@@ -114,13 +108,15 @@ struct Car
     bool stop(int stopDistance); //returns true if you stopped in time.
 };
 
-Car::Car()
+Car::Car() : //initializer list
+
+radioBrand ("Sony"),
+numTires (4),
+engineSize (4600),
+rimBrand ("MSR"),
+seatCount (2)
 {
-    radioBrand = "Sony";
-    numTires = 4;
-    engineSize = 4600;
-    rimBrand = "MSR";
-    seatCount = 2;
+
 }
 
 int Car::drive(int speed, int time)
@@ -160,13 +156,15 @@ struct Computer
     void displayVolume(int loudness = 1);
 };
 
-Computer::Computer()
+Computer::Computer() :
+
+    keyFeel (2),
+    monitorResolution (1080),
+    indicatorLightKind ("LED"),
+    buttonCount (3),
+    processorSpeed (4.0f) 
 {
-    keyFeel = 2;
-    monitorResolution = 1080;
-    indicatorLightKind = "LED";
-    buttonCount = 3;
-    processorSpeed = 4.0f; 
+
 }
 
 bool Computer::runQuickbooks(bool isQBInstalled)
@@ -208,13 +206,15 @@ struct MidiController
     void changeBank(int bankNumber);
 };
 
-MidiController::MidiController()
+MidiController::MidiController() :
+
+    knobCount (16),
+    buttonStyle ('l'),
+    faderRange (10),
+    displaySizeInches (7.2f),
+    padType ("lit")
 {
-    knobCount = 16;
-    buttonStyle = 'l';
-    faderRange = 10;
-    displaySizeInches = 7.2f;
-    padType = "lit";
+
 }
 
 void MidiController::controlSynth(int midiMessage)
@@ -255,15 +255,8 @@ struct Filter
     void cutLowFreq(float cutOffFrequency = 1000.0f);
 };
 
-Filter::Filter()
-{
-    filterType = "LP";
-    maxCutOffFreq = 20000.0F;
-    rezAmount = 1; //1-100
-    modAmount = 1; //1-100
-    cutOffFrequency = 0.0f;
-    freqRangeRemaining = 0.0f;
-}
+Filter::Filter() {}
+
  
 void Filter::getSoundTone(float newCutOffFrequency)
 {
@@ -299,14 +292,8 @@ struct Oscillator
     float convertVoltage(bool voltageCovertActive, float resistance, float current); //returns the converted voltage level
 };
 
-Oscillator::Oscillator()
-{
-    oscOutput = 1; //1-10
-    waveType = 1; //1=sine 2=saw 3=square
-    maxPitchChange = 24; //semitones
-    syncOn = false;
-    maxVolume = 1; //1-11
-}
+Oscillator::Oscillator() {}
+
 
 float Oscillator::osc2Mod(bool osc2ModActive)
 {
@@ -352,13 +339,15 @@ struct LFO
     LFO();
 };
 
-LFO::LFO()
-{
+LFO::LFO() :
+
     waveType = 1; //1=sine 2=saw 3=square
     LfoRate = 20.0f;
     phaseStartPos = 1;  //1-100
     syncOn = false;
     bipolarOn = true;
+{
+
 }
 
 float LFO::modulateCutoff(float lfoRate, bool syncOff)
