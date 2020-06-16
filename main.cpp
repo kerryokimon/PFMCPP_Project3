@@ -90,11 +90,6 @@ bool Skateboard::kickFlip(int degree)
     return false;
 }
 
-/*    Skateboard skate;              //3) instantiating a UDT named 'foo' in main()
-    skate.rollDownStreet(19);     //4) calling a member function of the UDT instance.
-    //return 0;
-*/
-
 struct Car
 {
     std::string radioBrand = "Sony";
@@ -109,7 +104,6 @@ struct Car
 };
 
 Car::Car() : //initializer list
-
 radioBrand ("Sony"),
 numTires (4),
 engineSize (4600),
@@ -157,7 +151,6 @@ struct Computer
 };
 
 Computer::Computer() :
-
     keyFeel (2),
     monitorResolution (1080),
     indicatorLightKind ("LED"),
@@ -207,7 +200,6 @@ struct MidiController
 };
 
 MidiController::MidiController() :
-
     knobCount (16),
     buttonStyle ('l'),
     faderRange (10),
@@ -257,7 +249,6 @@ struct Filter
 
 Filter::Filter() {}
 
- 
 void Filter::getSoundTone(float newCutOffFrequency)
 {
     if (newCutOffFrequency < maxCutOffFreq)
@@ -340,12 +331,11 @@ struct LFO
 };
 
 LFO::LFO() :
-
-    waveType = 1; //1=sine 2=saw 3=square
-    LfoRate = 20.0f;
-    phaseStartPos = 1;  //1-100
-    syncOn = false;
-    bipolarOn = true;
+    waveType (1), //1=sine 2=saw 3=square
+    LfoRate (20.0f),
+    phaseStartPos (1),  //1-100
+    syncOn (false),
+    bipolarOn (true)
 {
 
 }
@@ -393,8 +383,7 @@ Display::Display()
     displayWidth = 7.2f;
     displayColor = 'b'; //b = blue r = red
     displayTechnology = 'L';//L for LED; O for OLED
-    electricUsed =0;
-    
+    electricUsed =0;   
 } 
 
 void Display::displaySettings(char newDisplayColor)
@@ -439,7 +428,7 @@ struct FXSection
     int reverbTypeA = 1; //1 = plate 2 = spring
     FXSection();
 
-    void delayActive(bool delayOn, int wetSignalChange);     
+    void delayActive(bool delayOn, int wetSignalChange); 
     int delayTypeOut(int delayType); 
     void saturationActive(int distAmount2, bool active);
 };
